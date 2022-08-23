@@ -12,7 +12,7 @@ const HomeBanner = () => {
     let iconStyles = { color: "#f09116", fontSize: "2.5rem" };
 
     return (
-        <div className='bannerDiv container mt-5'>
+        <div className='bannerDiv container pt-4'>
             <div className="categories card p-1">
                 <div className="card-body">
                     <ul className='list-group'>
