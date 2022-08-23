@@ -1,0 +1,19 @@
+.top-selling {
+  padding: 1rem;
+
+  .products {
+    overflow-x: scroll;
+
+    a:not(:last-child) {
+      margin: 0.5rem 1rem;
+    }
+
+    a:last-child() {
+      margin-bottom: 500rem;
+    }
+
+    a .product img {
+      max-height: 8rem;
+    }
+  }
+}

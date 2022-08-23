@@ -1,0 +1,45 @@
+.container {
+  .subscribe {
+    .input {
+      button:hover {
+        border: 1px solid #f09116;
+        color: #f09116;
+        background-color: transparent;
+      }
+    }
+  }
+  .download {
+    .download-links {
+      .app-store:hover {
+        border: 1px solid #f09116 !important;
+        color: #f09116;
+        background-color: transparent;
+      }
+      .app-store small {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.container.email-div {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+
+.container.services {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  ul {
+    list-style: none !important;
+    font-size: small;
+    padding-left: 0;
+    margin-top: 1rem;
+  }
+}
+
+.container.joinus {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}

@@ -1,0 +1,28 @@
+.top-bar {
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    gap: 2rem;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .search .form-control {
+    border: 1px solid rgb(212, 212, 212) !important;
+  }
+
+  .search .form-control:focus {
+    box-shadow: none !important;
+  }
+
+  .search button {
+    background-color: #f09116;
+  }
+
+  .account span {
+    font-weight: 600;
+  }
+}
