@@ -2,6 +2,7 @@ import './SearchBar.scss'
 import { BiSearchAlt2, BiUser } from "react-icons/bi";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 import { HiOutlineShoppingCart } from "react-icons/hi";
+import { Link } from 'react-router-dom';
 
 
 const SearchBar = () => {
@@ -16,17 +17,29 @@ const SearchBar = () => {
                 </div>
 
                 <div className='account d-flex'>
-                    <div className="d-flex align-items-center">
-                        <BiUser size={25} />
-                        <span className='ms-2'>Account</span>
+                    <div>
+                        <Link to="/cart">
+                            <div className="d-flex align-items-center" role="button">
+                                <BiUser size={25} />
+                                <span className='ms-2'>Account</span>
+                            </div>
+                        </Link>
                     </div>
-                    <div className="d-flex align-items-center ms-4">
-                        <AiOutlineQuestionCircle size={25} />
-                        <span className='ms-2'>Help</span>
+                    <div>
+                        <Link to="/cart">
+                            <div className="d-flex align-items-center ms-4" role="button">
+                                <AiOutlineQuestionCircle size={25} />
+                                <span className='ms-2'>Help</span>
+                            </div>
+                        </Link>
                     </div>
-                    <div className="d-flex align-items-center ms-4">
-                        <HiOutlineShoppingCart size={25} />
-                        <span className='ms-2'>Cart</span>
+                    <div>
+                        <Link to="/cart">
+                            <div className="d-flex align-items-center ms-4" role="button">
+                                <HiOutlineShoppingCart size={25} />
+                                <span className='ms-2'>Cart</span>
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </div>

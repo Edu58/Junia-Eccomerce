@@ -1,0 +1,40 @@
+.bg {
+  background-color: rgb(240, 240, 240);
+}
+
+.container {
+  .content {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 1rem;
+
+    .cart-items {
+      .product {
+        .image {
+          max-width: 80%;
+
+          img {
+            max-width: 8rem;
+          }
+        }
+
+        .amount {
+          .remove {
+            color: #f09116;
+          }
+
+          .add button {
+            background-color: #f09116;
+          }
+        }
+      }
+    }
+
+    .cart-summary {
+      button {
+        background-color: #f09116;
+        color: #fff;
+      }
+    }
+  }
+}

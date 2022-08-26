@@ -1,9 +1,9 @@
 .top-bar {
-
   .container {
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
     gap: 2rem;
+    align-items: center;
   }
 
   p {
@@ -22,7 +22,15 @@
     background-color: #f09116;
   }
 
-  .account span {
-    font-weight: 600;
+  .account {
+
+    a {
+      text-decoration: none;
+      color: #000;
+    }
+
+    span {
+      font-weight: 600;
+    }
   }
 }

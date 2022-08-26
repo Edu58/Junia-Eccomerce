@@ -5,6 +5,7 @@ import SearchBar from './components/homepage/SearchBar'
 import Homepage from './pages/Homepage'
 import Footer from './components/Footer'
 import Product from './pages/Product'
+import Cart from './pages/Cart'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
 
         <Route index element={<Homepage />}></Route>
         <Route path='/product' element={<Product />}></Route>
+        <Route path='/cart' element={<Cart />}></Route>
 
       </Routes>
       <Footer />

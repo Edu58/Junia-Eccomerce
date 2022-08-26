@@ -1,8 +1,10 @@
-const Card = ({ contents }) => {
+import './Card.scss'
+
+const Card = ({children}) => {
     return (
         <div className="card">
             <div className="card-body">
-                {contents}
+                {children}
             </div>
         </div>
     )
