@@ -63,45 +63,45 @@ const Footer = () => {
 					<ul>
 						<li>Help Center</li>
 						<li>Contact Us</li>
-						<li>How to shop on Jumia?</li>
+						<li>How to shop on Junia?</li>
 						<li>Shipping and delivery</li>
 						<li>Return Policy</li>
 						<li>Dispute Resolution Policy</li>
 						<li>Corporate and Bulk Purchase</li>
-						<li>Jumia International Shipping</li>
-						<li>Advertise with Jumia</li>
-						<li>Jumia Logistics Services</li>
+						<li>Junia International Shipping</li>
+						<li>Advertise with Junia</li>
+						<li>Junia Logistics Services</li>
 						<li>Report a Product</li>
 					</ul>
 
 				</div>
 				<div className="about">
-					<small className="fw-bold">ABOUT JUMIA</small>
+					<small className="fw-bold">ABOUT JUNIA</small>
 
 					<ul >
 						<li>About us</li>
-						<li>Jumia Careers</li>
-						<li>Jumia Express</li>
+						<li>Junia Careers</li>
+						<li>Junia Express</li>
 						<li>Terms and Conditions</li>
 						<li>Privacy & Cookie Notice</li>
-						<li>UPS - Jumia International Shipping</li>
+						<li>UPS - Junia International Shipping</li>
 						<li>Flash Sales</li>
 					</ul>
 
 				</div>
 				<div className="make-money">
-					<small className='fw-bold'>MAKE MONEY WITH JUMIA</small>
+					<small className='fw-bold'>MAKE MONEY WITH JUNIA</small>
 
 					<ul>
-						<li>Sell on Jumia</li>
+						<li>Sell on Junia</li>
 						<li>Become a Sales Consultant</li>
 						<li>Become a Logistics Service Partner</li>
-						<li>Jumia City Partner Program</li>
+						<li>Junia City Partner Program</li>
 					</ul>
 
 				</div>
 				<div className="jumia">
-					<small className="fw-bold">JUMIA INTERNATIONAL</small>
+					<small className="fw-bold">JUNIA INTERNATIONAL</small>
 
 					<ul>
 						<li>Algeria</li>

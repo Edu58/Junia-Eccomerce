@@ -2,11 +2,13 @@ import './Product.scss'
 import banner from '../assets/alex-unsplash.jpg'
 import { TbTruckReturn } from "react-icons/tb";
 import { FaFacebookF } from "react-icons/fa";
+import { FaTwitter } from 'react-icons/fa';
 import { TiSocialInstagram } from "react-icons/ti";
 import ProductRows from '../components/homepage/ProductRows';
+import { Link } from 'react-router-dom';
 
 const Product = () => {
-	let deliveryIconStyles = { fontSize: "2.5rem" };
+	let deliveryIconStyles = { fontSize: "3.5rem" };
 	let socialIconsStyles = { fontSize: "1.5rem" };
 	return (
 		<div className="bg py-4">
@@ -21,7 +23,7 @@ const Product = () => {
 									<p>Share this product</p>
 									<div className='mb-3'>
 										<FaFacebookF style={socialIconsStyles} /> &nbsp;
-										<TiSocialInstagram style={socialIconsStyles} />
+										<FaTwitter style={socialIconsStyles} />
 									</div>
 								</div>
 							</div>
@@ -40,7 +42,9 @@ const Product = () => {
 								<p className="small">+ shipping from KSH 92 to CBD</p>
 
 								<div className="add-to-cart-btn">
-									<button className="btn w-100 text-light">ADD TO CART</button>
+									<Link to="/cart">
+										<button className="btn w-100 text-light">ADD TO CART</button>
+									</Link>
 								</div>
 
 								<div className="promotions mt-4">
@@ -76,7 +80,7 @@ const Product = () => {
 										</select>
 									</div>
 
-									<div className="more-info">
+									<div className="more-info mt-4">
 										<div className="d-flex door-delivery">
 											<TbTruckReturn style={deliveryIconStyles} />
 
@@ -100,30 +104,6 @@ const Product = () => {
 												<p className="small">
 													Delivery Ksh 92 <br />
 													Pickup by 31st August when you order within the next 1hr <br />
-												</p>
-											</div>
-										</div>
-										<div className="d-flex door-delivery">
-											<TbTruckReturn style={deliveryIconStyles} />
-
-											<div className="text ms-2">
-												<span className="small fw-bold">
-													Return Policy
-												</span>
-												<p className="small">
-													Easy Return, Quick Refund
-												</p>
-											</div>
-										</div>
-										<div className="d-flex door-delivery">
-											<TbTruckReturn style={deliveryIconStyles} />
-
-											<div className="text ms-2">
-												<span className="small fw-bold">
-													Warranty
-												</span>
-												<p className="small">
-													2 Years
 												</p>
 											</div>
 										</div>

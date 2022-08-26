@@ -9,8 +9,9 @@ const SearchBar = () => {
     return (
         <div className="top-bar py-4">
             <div className="container">
-                <p className='fs-3 fw-bolder'>Jumia</p>
-
+                <Link to="/" className='text-decoration-none'>
+                    <p className='fs-3 fw-bolder text-dark'>Junia</p>
+                </Link>
                 <div className="search d-flex">
                     <input type="search" name="product" className='form-control' placeholder='search products' />
                     <button className="btn text-light fw-bold ms-2">search</button>
