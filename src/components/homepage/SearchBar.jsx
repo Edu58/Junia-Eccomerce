@@ -6,7 +6,7 @@ import { HiOutlineShoppingCart } from "react-icons/hi";
 
 const SearchBar = () => {
     return (
-        <div className="top-bar bg-light py-4">
+        <div className="top-bar py-4">
             <div className="container">
                 <p className='fs-3 fw-bolder'>Jumia</p>
 

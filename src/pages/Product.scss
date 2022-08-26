@@ -1,0 +1,42 @@
+.bg {
+  background-color: rgb(224, 224, 224);
+}
+
+.product {
+  .top-div {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 1rem;
+
+    .card {
+      border: none;
+      background-color: #fff !important;
+    }
+
+    .product-img {
+      // .img-col img {
+      //     max-height: 25rem;
+      // }
+
+      .product-title {
+        .add-to-cart-btn {
+          button {
+            background-color: #f09116;
+          }
+        }
+      }
+    }
+  }
+
+  .product-specification {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 1rem;
+
+    .small-details-card {
+      .add-to-cart-btn button {
+        background-color: #f09116;
+      }
+    }
+  }
+}
