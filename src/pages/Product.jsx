@@ -196,7 +196,7 @@ const Product = () => {
 				</div>
 
 				<div className="row">
-					<ProductRows categoryName="More items from the seller" />
+					<ProductRows categoryName="More items from this seller" />
 				</div>
 			</div>
 		</div>

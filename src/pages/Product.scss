@@ -1,5 +1,5 @@
 .bg {
-  background-color: rgb(224, 224, 224);
+  background-color: rgb(240, 240, 240);
 }
 
 .product {
@@ -32,6 +32,10 @@
     display: grid;
     grid-template-columns: 3fr 1fr;
     gap: 1rem;
+
+    .card {
+        border: none !important;
+    }
 
     .small-details-card {
       .add-to-cart-btn button {
