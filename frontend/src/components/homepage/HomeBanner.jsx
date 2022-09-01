@@ -1,12 +1,12 @@
 import './HomeBanner.scss'
 import axios from 'axios'
+import Errors from '../Errors'
 import banner from '../../assets/alex-unsplash.jpg'
 import sidebarImg from '../../assets/Netflix-new-icon.png'
 import { FiSmartphone } from "react-icons/fi";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 import { TbTruckReturn } from "react-icons/tb";
 import { GiTakeMyMoney } from "react-icons/gi";
-import { useEffect } from 'react';
 import { useState } from 'react';
 
 
@@ -16,24 +16,9 @@ const HomeBanner = () => {
 
     let iconStyles = { color: "#f09116", fontSize: "2.5rem" };
 
-    useEffect(() => {
-        async function fetchCategories() {
-            try {
-                const result = await axios.get('https://fakestoreapi.com/products/categories')
-                setCategories(result.data)
-            } catch (error) {
-                setError(error.message)
-                console.log(error)
-            }
-        }
-
-        fetchCategories()
-        console.log(categories)
-    }, [])
-
     return (
         <>
-            {error ? <p className='alert alert-danger text-center'>{error}</p> : ''}
+            {error ? <Errors type='warning' message={error} /> : ''}
 
             <div className='bannerDiv container pt-4'>
                 <div className="categories card p-1">
