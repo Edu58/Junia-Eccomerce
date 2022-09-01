@@ -1,24 +1,39 @@
 import './HomeBanner.scss'
-import axios from 'axios'
 import Errors from '../Errors'
-import banner from '../../assets/alex-unsplash.jpg'
-import sidebarImg from '../../assets/Netflix-new-icon.png'
 import { FiSmartphone } from "react-icons/fi";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 import { TbTruckReturn } from "react-icons/tb";
 import { GiTakeMyMoney } from "react-icons/gi";
+import { useContext } from 'react'
+import ProductsContext from '../../context/products'
+import { useEffect } from 'react'
+import axiosClient from '../Axios'
 import { useState } from 'react';
 
 
 const HomeBanner = () => {
-    const [categories, setCategories] = useState([])
-    const [error, setError] = useState('')
+
+    const { errors, categories, fetchCategories } = useContext(ProductsContext)
+
+    const [banner, setBanner] = useState('')
 
     let iconStyles = { color: "#f09116", fontSize: "2.5rem" };
 
+    const fetchBannerImage = async () => {
+        const result = await axiosClient.get('/products/11')
+        setBanner(result.data)
+    }
+
+
+    useEffect(() => {
+        fetchCategories()
+        fetchBannerImage()
+    }, [])
+
+
     return (
         <>
-            {error ? <Errors type='warning' message={error} /> : ''}
+            {errors ? <Errors type='warning' message={errors} /> : ''}
 
             <div className='bannerDiv container pt-4'>
                 <div className="categories card p-1">
@@ -34,8 +49,10 @@ const HomeBanner = () => {
                         </ul>
                     </div>
                 </div>
-                <div className="banner">
-                    <img src={banner} className='rounded' />
+                <div className="banner card">
+                    <div className="card-body">
+                        <img src={banner.image} className='rounded img-fluid' />
+                    </div>
                 </div>
                 <div className="help-center">
                     <div className='card'>
@@ -67,8 +84,10 @@ const HomeBanner = () => {
                         </div>
                     </div>
 
-                    <div className="sidebar-img mt-4">
-                        <img src={sidebarImg} className='rounded' />
+                    <div className="sidebar-img card mt-4">
+                        <div className="card-body">
+                            <img src={banner.image} className='rounded img-fluid' />
+                        </div>
                     </div>
                 </div>
             </div>

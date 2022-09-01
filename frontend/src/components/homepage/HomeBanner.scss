@@ -1,24 +1,32 @@
 .bannerDiv {
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    gap: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  gap: 1rem;
 
-    .banner img {
-        width: 100%;
-        height: 100%;
-    }
+  .banner {
+    object-fit: contain;
+    max-height: auto;
+    width: 100%;
+    text-align: center;
+  }
 
-    .help-center .sidebar-img img {
-        width: 100%;
-        height: 100%;
-    }
+  .banner img {
+    width: auto;
+    max-height: 30rem;
+  }
+
+  .help-center .sidebar-img {
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+  }
 }
 
 .categories ul {
-    list-style: none;
+  list-style: none;
 
-    li {
-        font-size: 1rem;
-        line-height: 2.5rem;
-    }
+  li {
+    font-size: 1rem;
+    line-height: 2.5rem;
+  }
 }
