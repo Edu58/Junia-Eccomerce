@@ -5,11 +5,29 @@ import { FaFacebookF } from "react-icons/fa";
 import { FaTwitter } from 'react-icons/fa';
 import { TiSocialInstagram } from "react-icons/ti";
 import ProductRows from '../components/homepage/ProductRows';
+import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useContext } from 'react';
+import ProductsContext from '../context/products';
+import axiosClient from '../components/Axios';
+import { useState } from 'react';
 
 const Product = () => {
+	let { id } = useParams()
+
+	const { allProducts } = useContext(ProductsContext)
+
+	const [product, setProduct] = useState({})
+
 	let deliveryIconStyles = { fontSize: "3.5rem" };
 	let socialIconsStyles = { fontSize: "1.5rem" };
+
+	useEffect(() => {
+		const singleProduct = allProducts.find(x => x.id == id)
+		singleProduct ? setProduct(singleProduct) : setProduct({})
+	}, [allProducts])
+
 	return (
 		<div className="bg py-4">
 			<div className='container product'>
@@ -17,7 +35,7 @@ const Product = () => {
 					<div className="card product-img">
 						<div className="card-body">
 							<div className="img-col text-center">
-								<img src={banner} alt="" className='img-fluid rounded' />
+								<img src={product.image} alt="" className='img-fluid rounded' />
 
 								<div className="share mt-5">
 									<p>Share this product</p>
@@ -30,14 +48,14 @@ const Product = () => {
 
 							<div className="product-title ms-4">
 								<p className="fs-4 fw-bold">
-									Netlix and chill with free subscriptions for all members
+									{product.title}
 								</p>
 
-								<p className="small brand">Brand: Netflix</p>
+								<p className="small brand">Brand: {product.brand ? product.brand : 'Unknown'}</p>
 
-								<p className="ratings">@@@@@</p>
+								<p className="ratings">Rating: {product.rating ? product.rating.rate : 0} of {product.rating ? product.rating.count : 0} votes</p>
 
-								<p className="fw-bold fs-5">Ksh 10, 000</p>
+								<p className="fw-bold fs-5">Ksh {product.price}</p>
 
 								<p className="small">+ shipping from KSH 92 to CBD</p>
 
@@ -65,15 +83,15 @@ const Product = () => {
 									<p className="fw-bold">Choose your location</p>
 
 									<div className="choices">
-										<select class="city form-select">
-											<option value="Nairobi" selected>Nairobi</option>
+										<select className="city form-select">
+											<option value="Nairobi" defaultValue="Nairobi">Nairobi</option>
 											<option value="Mombasa">Mombasa</option>
 											<option value="Kisumu">Kisumu</option>
 											<option value="Nakuru">Nakuru</option>
 										</select>
 
-										<select class="town form-select mt-2">
-											<option value="CDB" selected>CBD-UON/Globe/Koja</option>
+										<select className="town form-select mt-2">
+											<option value="CDB" defaultValue="CBD">CBD-UON/Globe/Koja</option>
 											<option value="Embakasi">Embakasi</option>
 											<option value="Garden Estate">Garden Estate</option>
 											<option value="Gigiri">Gigiri</option>
@@ -116,12 +134,14 @@ const Product = () => {
 							<div className="card-body">
 								<p className="fw-bold">SELLER INFORMATION</p>
 
-								<p className="seller">Vision</p>
+								<p className="seller">
+									{product.brand ? product.brand : 'Unknown'}
+								</p>
 
 								<p className="fw-bold perfomance">Seller Perfomance</p>
 								<span>Order fulfillment rate: Good</span> <br />
 								<span>Quality score: Good</span> <br />
-								<span>Customer rating: Good</span>
+								<span>Customer rating: {product.rating ? product.rating.rate : 0}</span>
 							</div>
 						</div>
 					</div>
@@ -131,53 +151,36 @@ const Product = () => {
 					<div className="product-specification">
 						<div className="info">
 							<div className="card">
-								<div className="card-body">
+								<div className="card-body details-card">
 									<p className="fs-4 fw-bold">Product details</p>
 
 									<article>
-										Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum tenetur facilis at commodi vero veniam quas magni. Optio, omnis eaque sit ipsum atque ab nostrum consequatur, quia iure maiores quidem amet quam ea rem expedita corrupti temporibus. Sequi incidunt saepe necessitatibus voluptas asperiores ratione, quis eos similique quibusdam quod nihil.
+										{product.description}
 									</article>
 								</div>
 							</div>
 
-							<div className="card mt-4">
-								<div className="card-body">
-									<p className="fs-4 fw-bold">Specifications</p>
+							{product.specifications
+								?
+								<div className="card mt-4">
+									<div className="card-body">
+										<p className="fs-4 fw-bold">Specifications</p>
 
-									<article>
-										Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil non nemo, dignissimos sequi molestias totam esse obcaecati, harum maxime doloribus odit est necessitatibus? Neque quod consequuntur, facilis possimus sapiente corporis dignissimos repudiandae magni illo ut officia quibusdam quam dolorum excepturi pariatur totam? Ad ex quam ab aliquam rerum possimus sit voluptatibus earum, neque expedita exercitationem blanditiis nisi eos aut perspiciatis fuga atque optio labore, consequuntur assumenda odio. Pariatur at, illo inventore tempora possimus corrupti, in dolore dolorum aliquid repellat quia!
-									</article>
-								</div>
-							</div>
-						</div>
-
-						<div className="small-details-card">
-							<div className="card">
-								<div className="card-body">
-									<span>Product details</span> <br />
-									<span>Specifications</span> <br />
-									<span>Customer Feedback</span>
-								</div>
-							</div>
-
-							<div className="card mt-4">
-								<div className="card-body">
-									<img src={banner} alt="" className='img-fluid rounded' />
-									<p className="fw-bold mt-2">Netlix shows max</p>
-									<p className="fw-bold">KSH 10, 000</p>
-
-									<div className="add-to-cart-btn">
-										<button className="btn w-100 text-light">ADD TO CART</button>
+										<article>
+											Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil non nemo, dignissimos sequi molestias totam esse obcaecati, harum maxime doloribus odit est necessitatibus? Neque quod consequuntur, facilis possimus sapiente corporis dignissimos repudiandae magni illo ut officia quibusdam quam dolorum excepturi pariatur totam? Ad ex quam ab aliquam rerum possimus sit voluptatibus earum, neque expedita exercitationem blanditiis nisi eos aut perspiciatis fuga atque optio labore, consequuntur assumenda odio. Pariatur at, illo inventore tempora possimus corrupti, in dolore dolorum aliquid repellat quia!
+										</article>
 									</div>
 								</div>
-							</div>
+								:
+								null
+							}
 						</div>
 					</div>
 				</div>
 
-				<div className="row">
+				{/* <div className="row">
 					<ProductRows categoryName="More items from this seller" />
-				</div>
+				</div> */}
 			</div>
 		</div>
 	)

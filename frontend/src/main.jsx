@@ -7,11 +7,11 @@ import './index.scss'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  <React.Fragment>
     <ProductsProvider>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </ProductsProvider>
-  </React.StrictMode>
+  </React.Fragment>
 )

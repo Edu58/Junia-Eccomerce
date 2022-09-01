@@ -9,8 +9,8 @@ const ProductRows = ({ categoryName, products }) => {
             <div className="products d-flex align-items-center text-center">
                 {products.map((product) => {
                     return (
-                        <div className='product'>
-                            <Link to='/product' className='text-decoration-none text-dark' key={product.id}>
+                        <div className='product' key={product.id}>
+                            <Link to={`/product/${categoryName}/${product.id}`} className='text-decoration-none text-dark'>
 
                                 <img src={product.image} alt="" className='img-fluid rounded' />
 

@@ -11,25 +11,9 @@ import axiosClient from '../Axios'
 import { useState } from 'react';
 
 
-const HomeBanner = () => {
-
-    const { errors, categories, fetchCategories } = useContext(ProductsContext)
-
-    const [banner, setBanner] = useState('')
+const HomeBanner = ({ categories, errors, banner }) => {
 
     let iconStyles = { color: "#f09116", fontSize: "2.5rem" };
-
-    const fetchBannerImage = async () => {
-        const result = await axiosClient.get('/products/11')
-        setBanner(result.data)
-    }
-
-
-    useEffect(() => {
-        fetchCategories()
-        fetchBannerImage()
-    }, [])
-
 
     return (
         <>
@@ -39,19 +23,25 @@ const HomeBanner = () => {
                 <div className="categories card p-1">
                     <div className="card-body">
                         <ul className='list-group'>
-                            {categories.map((category, i) => {
-                                return (
-                                    <li key={i}>
-                                        <a href="" className='text-decoration-none text-dark'><FiSmartphone className='me-2' />{category}</a>
-                                    </li>
-                                )
-                            })}
+                            {
+                                categories
+                                    ?
+                                    categories.map((category, i) => {
+                                        return (
+                                            <li key={i}>
+                                                <a href="" className='text-decoration-none text-dark'><FiSmartphone className='me-2' />{category}</a>
+                                            </li>
+                                        )
+                                    })
+                                    :
+                                    ''
+                            }
                         </ul>
                     </div>
                 </div>
                 <div className="banner card">
                     <div className="card-body">
-                        <img src={banner.image} className='rounded img-fluid' />
+                        {banner ? <img src={banner.image} className='rounded img-fluid' /> : ''}
                     </div>
                 </div>
                 <div className="help-center">
@@ -86,7 +76,7 @@ const HomeBanner = () => {
 
                     <div className="sidebar-img card mt-4">
                         <div className="card-body">
-                            <img src={banner.image} className='rounded img-fluid' />
+                            {banner ? <img src={banner.image} className='rounded img-fluid' /> : ''}
                         </div>
                     </div>
                 </div>
