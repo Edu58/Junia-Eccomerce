@@ -2,18 +2,26 @@
   padding: 1rem;
 
   .products {
+    width: 100%;
     overflow-x: scroll;
 
-    a:not(:last-child) {
-      margin: 0.5rem 1rem;
-    }
+    .product {
+      object-fit: contain;
+      width: 12rem;
+      height: 12rem;
 
-    a:last-child() {
-      margin-bottom: 500rem;
-    }
+      img {
+        max-height: 8rem;
+        max-width: 8rem;
+      }
 
-    a .product img {
-      max-height: 8rem;
+      .title {
+        white-space: nowrap;
+      }
+
+      :not(:last-child) {
+        margin: 0.5rem 1rem;
+      }
     }
   }
 }
