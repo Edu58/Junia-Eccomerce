@@ -53,8 +53,8 @@ const Cart = () => {
                     </div>
                 </div>
 
-                <ProductRows categoryName="Top selling items"/>
-                <ProductRows categoryName="You may also like" />
+                {/* <ProductRows categoryName="Top selling items"/>
+                <ProductRows categoryName="You may also like" /> */}
             </div>
         </div>
     )

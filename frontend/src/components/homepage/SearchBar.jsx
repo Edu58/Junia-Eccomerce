@@ -3,9 +3,15 @@ import { BiSearchAlt2, BiUser } from "react-icons/bi";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import ProductsContext from '../../context/products';
 
 
 const SearchBar = () => {
+
+    const { cartState } = useContext(ProductsContext)
+    const { cart } = cartState
+
     return (
         <div className="top-bar py-4">
             <div className="container">
@@ -39,6 +45,7 @@ const SearchBar = () => {
                             <div className="d-flex align-items-center ms-4" role="button">
                                 <HiOutlineShoppingCart size={25} />
                                 <span className='ms-2'>Cart</span>
+                                <sup className='fs-6 badge bg-secondary'>{cart.cartItems.length}</sup>
                             </div>
                         </Link>
                     </div>

@@ -16,7 +16,7 @@ import { useState } from 'react';
 const Product = () => {
 	let { id } = useParams()
 
-	const { allProducts } = useContext(ProductsContext)
+	const { allProducts, cartDispatch, cartState } = useContext(ProductsContext)
 
 	const [product, setProduct] = useState({})
 
@@ -27,6 +27,13 @@ const Product = () => {
 		const singleProduct = allProducts.find(x => x.id == id)
 		singleProduct ? setProduct(singleProduct) : setProduct({})
 	}, [allProducts])
+
+	const addToCartHandler = () => {
+		const itemExists = cartState.cart.cartItems.find((x) => x.id === product.id)
+		const quantity = itemExists ? itemExists.quantity ++ : 1
+		cartDispatch({ type: 'ADD_TO_CART', payload: { ...product, quantity } })
+		console.log(cartState.cart)
+	}
 
 	return (
 		<div className="bg py-4">
@@ -55,14 +62,12 @@ const Product = () => {
 
 								<p className="ratings">Rating: {product.rating ? product.rating.rate : 0} of {product.rating ? product.rating.count : 0} votes</p>
 
-								<p className="fw-bold fs-5">Ksh {product.price}</p>
+								<p className="fw-bold fs-4">Ksh {product.price}</p>
 
 								<p className="small">+ shipping from KSH 92 to CBD</p>
 
 								<div className="add-to-cart-btn">
-									<Link to="/cart">
-										<button className="btn w-100 text-light">ADD TO CART</button>
-									</Link>
+									<button className="btn w-100 text-light" onClick={addToCartHandler}>ADD TO CART</button>
 								</div>
 
 								<div className="promotions mt-4">

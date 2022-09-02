@@ -1,4 +1,5 @@
 import { createContext } from "react";
+import { useReducer } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import axiosClient from '../components/Axios'
@@ -6,14 +7,13 @@ import axiosClient from '../components/Axios'
 const ProductsContext = createContext()
 export default ProductsContext
 
+
+
 export const ProductsProvider = ({ children }) => {
     const [categories, setCategories] = useState([])
-    const [electronics, setElectronics] = useState([])
-    const [jewelery, setJewelery] = useState([])
-    const [mensClothing, setMensClothing] = useState([])
-    const [womensClothing, setWomensClothing] = useState([])
     const [allProducts, setAllProducts] = useState([])
     const [errors, setErrors] = useState('')
+    const [cartState, cartDispatch] = useReducer(cartReducer, { cart: { cartItems: [], } })
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -22,7 +22,7 @@ export const ProductsProvider = ({ children }) => {
                 setCategories(result.data)
             } catch (error) {
                 setErrors(error.message)
-                console.log(error)
+                console.log(error.message)
             }
         }
 
@@ -32,6 +32,7 @@ export const ProductsProvider = ({ children }) => {
                 setAllProducts(result.data)
             } catch (error) {
                 setErrors(error.message)
+                console.log(error.message)
             }
         }
 
@@ -40,14 +41,35 @@ export const ProductsProvider = ({ children }) => {
     }, [])
 
 
+    function cartReducer(state, action) {
+        switch (action.type) {
+            case "ADD_TO_CART":
+                const newItem = action.payload
+                const itemsExists = state.cart.cartItems.find((item) => {
+                    item.id === newItem.id
+                })
+
+                const cartItems = itemsExists
+                    ?
+                    state.cart.cartItems.map((item) => {
+                        item.id === itemsExists.id ? newItem : item
+                    })
+                    :
+                    [...state.cart.cartItems, newItem]
+
+                return { ...state, cart: { ...state.cart, cartItems } }
+            default:
+                return state;
+        }
+    }
+
+
     let values = {
-        categories: categories,
-        allProducts: allProducts,
-        jewelery: jewelery,
-        electronics: electronics,
-        mensClothing: mensClothing,
-        womensClothing: womensClothing,
-        errors: errors,
+        categories,
+        allProducts,
+        cartState,
+        cartDispatch,
+        errors
     }
 
     return (
