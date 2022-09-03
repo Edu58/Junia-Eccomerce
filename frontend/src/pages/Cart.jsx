@@ -7,7 +7,15 @@ import ProductsContext from '../context/products'
 
 const Cart = () => {
 
-    const { cartState } = useContext(ProductsContext)
+    const { cartState, cartDispatch } = useContext(ProductsContext)
+
+    const updateQuantityHandler = (item, quantity) => {
+        cartDispatch({ type: "ADD_TO_CART", payload: { ...item, quantity } })
+    }
+
+    const deleteItemFromCartHandler = (item) => {
+        cartDispatch({ type: "DELETE_FROM_CART", payload: item })
+    }
 
     return (
         <div className="bg py-4">
@@ -19,8 +27,8 @@ const Cart = () => {
                             ?
                             cartState.cart.cartItems.map((item) => {
                                 return (
-                                    <Card>
-                                        <div className="product d-flex flex-column">
+                                    <Card key={item.id}>
+                                        <div className="product d-flex flex-column py-2">
                                             <div className="d-flex justify-content-between">
                                                 <div className='image d-flex'>
                                                     <img src={item.image} alt="" className="img-fluid rounded" />
@@ -33,13 +41,13 @@ const Cart = () => {
 
                                             <div className="amount d-flex justify-content-between align-items-center mt-4">
                                                 <div className="remove">
-                                                    <div className="fw-bold" role="button">REMOVE</div>
+                                                    <button className="btn fw-bold" onClick={() => deleteItemFromCartHandler(item)}>REMOVE</button>
                                                 </div>
 
                                                 <div className="add d-flex align-items-center">
-                                                    <button className='btn text-light fw-bold'>+</button>
+                                                    <button className='btn text-light fw-bold' onClick={() => updateQuantityHandler(item, item.quantity - 1)}>-</button>
                                                     <div className='mx-4'>{item.quantity}</div>
-                                                    <button className='btn text-light fw-bold'>-</button>
+                                                    <button className='btn text-light fw-bold' onClick={() => updateQuantityHandler(item, item.quantity + 1)}>+</button>
                                                 </div>
                                             </div>
 
@@ -63,7 +71,7 @@ const Cart = () => {
                                 </p>
                             </div>
 
-                            <button className='btn w-100'>Checkout ({cartState.cart.cartItems.reduce((a, c) => a + (c.price*c.quantity), 0)})</button>
+                            <button className='btn w-100'>Checkout ({cartState.cart.cartItems.reduce((a, c) => a + (c.price * c.quantity), 0)})</button>
                         </Card>
                     </div>
                 </div>

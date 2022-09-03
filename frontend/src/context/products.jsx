@@ -57,6 +57,14 @@ export const ProductsProvider = ({ children }) => {
                     [...state.cart.cartItems, newItem]
 
                 return { ...state, cart: { ...state.cart, cartItems } }
+
+            case "DELETE_FROM_CART": {
+                const cartItems = state.cart.cartItems.filter((item) =>
+                    item.id !== action.payload.id
+                )
+
+                return { ...state, cart: { ...state.cart, cartItems } }
+            }
             default:
                 return state;
         }
