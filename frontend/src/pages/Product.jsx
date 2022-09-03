@@ -30,9 +30,8 @@ const Product = () => {
 
 	const addToCartHandler = () => {
 		const itemExists = cartState.cart.cartItems.find((x) => x.id === product.id)
-		const quantity = itemExists ? itemExists.quantity ++ : 1
+		const quantity = itemExists ? itemExists.quantity + 1 : 1
 		cartDispatch({ type: 'ADD_TO_CART', payload: { ...product, quantity } })
-		console.log(cartState.cart)
 	}
 
 	return (

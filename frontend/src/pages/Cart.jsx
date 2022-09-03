@@ -2,41 +2,54 @@ import './Cart.scss'
 import Card from "../components/Card"
 import banner from '../assets/alex-unsplash.jpg'
 import ProductRows from '../components/homepage/ProductRows'
+import { useContext } from 'react'
+import ProductsContext from '../context/products'
 
 const Cart = () => {
+
+    const { cartState } = useContext(ProductsContext)
+
     return (
         <div className="bg py-4">
             <div className="container">
                 <div className="content">
                     <div className="cart-items">
-                        <Card>
-                            <p className="fw-bold fs-5 border-bottom">Cart (3)</p>
+                        <p className="fw-bold fs-5">Cart ({cartState.cart.cartItems.length})</p>
+                        {cartState.cart.cartItems.length > 0
+                            ?
+                            cartState.cart.cartItems.map((item) => {
+                                return (
+                                    <Card>
+                                        <div className="product d-flex flex-column">
+                                            <div className="d-flex justify-content-between">
+                                                <div className='image d-flex'>
+                                                    <img src={item.image} alt="" className="img-fluid rounded" />
+                                                    <p className="ms-2">{item.title}</p>
+                                                </div>
+                                                <div className="price">
+                                                    <p className="fs-5 fw-bold">KSH {item.price}</p>
+                                                </div>
+                                            </div>
 
-                            <div className="product d-flex flex-column">
-                                <div className="d-flex justify-content-between">
-                                    <div className='image d-flex'>
-                                        <img src={banner} alt="" className="img-fluid rounded" />
-                                        <p className="ms-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit</p>
-                                    </div>
-                                    <div className="price">
-                                        <p className="fs-4 fw-bold">KSH 10,000</p>
-                                    </div>
-                                </div>
+                                            <div className="amount d-flex justify-content-between align-items-center mt-4">
+                                                <div className="remove">
+                                                    <div className="fw-bold" role="button">REMOVE</div>
+                                                </div>
 
-                                <div className="amount d-flex justify-content-between align-items-center mt-4">
-                                    <div className="remove">
-                                        <div className="fw-bold" role="button">REMOVE</div>
-                                    </div>
+                                                <div className="add d-flex align-items-center">
+                                                    <button className='btn text-light fw-bold'>+</button>
+                                                    <div className='mx-4'>{item.quantity}</div>
+                                                    <button className='btn text-light fw-bold'>-</button>
+                                                </div>
+                                            </div>
 
-                                    <div className="add d-flex align-items-center">
-                                        <button className='btn text-light fw-bold'>+</button>
-                                        <div className='mx-4'>3</div>
-                                        <button className='btn text-light fw-bold'>-</button>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </Card>
+                                        </div>
+                                    </Card>
+                                )
+                            })
+                            :
+                            <p className='text-center fw-bold'>Your cart is empty</p>
+                        }
                     </div>
 
                     <div className="cart-summary">
@@ -45,10 +58,12 @@ const Cart = () => {
 
                             <div className="d-flex justify-content-between align-items-center">
                                 <p className="small fw-bold">Subtotal</p>
-                                <p className="fs-4 fw-bold">Ksh 10,000</p>
+                                <p className="fs-4 fw-bold">
+                                    {cartState.cart.cartItems.reduce((a, c) => a + (c.price * c.quantity), 0)}
+                                </p>
                             </div>
 
-                            <button className='btn w-100'>Checkout (Ksh 10,000)</button>
+                            <button className='btn w-100'>Checkout ({cartState.cart.cartItems.reduce((a, c) => a + (c.price*c.quantity), 0)})</button>
                         </Card>
                     </div>
                 </div>

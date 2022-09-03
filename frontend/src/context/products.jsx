@@ -45,15 +45,14 @@ export const ProductsProvider = ({ children }) => {
         switch (action.type) {
             case "ADD_TO_CART":
                 const newItem = action.payload
-                const itemsExists = state.cart.cartItems.find((item) => {
-                    item.id === newItem.id
-                })
+                const itemsExists = state.cart.cartItems.find((item) =>
+                    item.id == newItem.id
+                )
 
                 const cartItems = itemsExists
-                    ?
-                    state.cart.cartItems.map((item) => {
-                        item.id === itemsExists.id ? newItem : item
-                    })
+                    ? state.cart.cartItems.map((item) =>
+                        item.id == itemsExists.id ? newItem : item
+                    )
                     :
                     [...state.cart.cartItems, newItem]
 
