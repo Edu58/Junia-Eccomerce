@@ -7,6 +7,7 @@ import Footer from './components/Footer'
 import Product from './pages/Product'
 import Cart from './pages/Cart'
 import SearchPage from './pages/SearchPage'
+import ByCategory from './pages/ByCategory'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
         <Route path='/product/:category/:id' element={<Product />}></Route>
         <Route path='/cart' element={<Cart />}></Route>
         <Route path='/search' element={<SearchPage />}></Route>
+        <Route path='/:category' element={<ByCategory />}></Route>
       </Routes>
       <Footer />
     </div>

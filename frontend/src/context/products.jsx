@@ -13,6 +13,7 @@ export const ProductsProvider = ({ children }) => {
     const [categories, setCategories] = useState([])
     const [allProducts, setAllProducts] = useState([])
     const [searchResults, setSearchResults] = useState([])
+    const [productsByCategory, setProductsByCategory] = useState([])
     const [errors, setErrors] = useState('')
     const [cartState, cartDispatch] = useReducer(cartReducer, { cart: { cartItems: [], } })
 
@@ -81,14 +82,23 @@ export const ProductsProvider = ({ children }) => {
         setSearchResults(results)
     }
 
+    function filterByCategory(category) {
+        const results = allProducts.filter((item) => {
+            return item.category == category.toLowerCase()
+        })
+        setProductsByCategory(results)
+    }
+
 
     let values = {
         categories,
         allProducts,
         cartState,
         searchResults,
+        productsByCategory,
         cartDispatch,
         searchItemInStore,
+        filterByCategory,
         errors
     }
 
