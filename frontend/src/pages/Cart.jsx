@@ -1,6 +1,5 @@
 import './Cart.scss'
 import Card from "../components/Card"
-import banner from '../assets/alex-unsplash.jpg'
 import ProductRows from '../components/homepage/ProductRows'
 import { useContext } from 'react'
 import ProductsContext from '../context/products'
@@ -10,7 +9,7 @@ const Cart = () => {
     const { cartState, cartDispatch } = useContext(ProductsContext)
 
     const updateQuantityHandler = (item, quantity) => {
-        cartDispatch({ type: "ADD_TO_CART", payload: { ...item, quantity } })
+        quantity > 0 ? cartDispatch({ type: "ADD_TO_CART", payload: { ...item, quantity } }) : null
     }
 
     const deleteItemFromCartHandler = (item) => {
@@ -45,7 +44,7 @@ const Cart = () => {
                                                 </div>
 
                                                 <div className="add d-flex align-items-center">
-                                                    <button className='btn text-light fw-bold' onClick={() => updateQuantityHandler(item, item.quantity - 1)}>-</button>
+                                                    <button className='btn text-light fw-bold' disabled={item.quantity <= 1} onClick={() => updateQuantityHandler(item, item.quantity - 1)}>-</button>
                                                     <div className='mx-4'>{item.quantity}</div>
                                                     <button className='btn text-light fw-bold' onClick={() => updateQuantityHandler(item, item.quantity + 1)}>+</button>
                                                 </div>
@@ -67,11 +66,11 @@ const Cart = () => {
                             <div className="d-flex justify-content-between align-items-center">
                                 <p className="small fw-bold">Subtotal</p>
                                 <p className="fs-4 fw-bold">
-                                    {cartState.cart.cartItems.reduce((a, c) => a + (c.price * c.quantity), 0)}
+                                    {cartState.cart.cartItems.reduce((a, c) => a + (c.price * c.quantity), 0).toFixed(2)}
                                 </p>
                             </div>
 
-                            <button className='btn w-100'>Checkout ({cartState.cart.cartItems.reduce((a, c) => a + (c.price * c.quantity), 0)})</button>
+                            <button className='btn w-100'>Checkout ({cartState.cart.cartItems.reduce((a, c) => a + (c.price * c.quantity), 0).toFixed(2)})</button>
                         </Card>
                     </div>
                 </div>

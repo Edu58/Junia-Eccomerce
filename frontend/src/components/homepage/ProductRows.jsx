@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const ProductRows = ({ categoryName, products }) => {
     return (
         <div className='top-selling container bg-light rounded mt-5'>
-            <p className="fs-5 fw-bold mb-4">{categoryName}</p>
+            <p className="fs-5 fw-bold mb-4">{categoryName ? categoryName : ''}</p>
 
             <div className="products d-flex align-items-center text-center">
                 {products.map((product) => {

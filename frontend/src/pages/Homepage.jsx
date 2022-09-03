@@ -1,11 +1,11 @@
 import './Homepage.scss'
+import Errors from '../components/Errors'
 import HomeBanner from '../components/homepage/HomeBanner'
 import ProductRows from '../components/homepage/ProductRows'
 import { useContext } from 'react'
 import ProductsContext from '../context/products'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { useMemo } from 'react'
 
 const Homepage = () => {
     const { allProducts, categories, errors } = useContext(ProductsContext)
@@ -30,19 +30,28 @@ const Homepage = () => {
     }, [allProducts])
 
     return (
-        <div className='homepage-container'>
-            <HomeBanner categories={categories} errors={errors} banner={allProducts[1]} />
+        <>
+            {
+                errors
+                    ?
+                    <Errors type='warning' message={errors} />
+                    :
+                    <div className='homepage-container'>
 
-            <ProductRows categoryName="Electronic" products={electronics} />
+                        <HomeBanner categories={categories} errors={errors} banner={allProducts[1]} />
 
-            <ProductRows categoryName="Jewelery" products={jewelery} />
+                        <ProductRows categoryName="Electronic" products={electronics} />
 
-            <ProductRows categoryName="Men's clothing" products={mensClothing} />
+                        <ProductRows categoryName="Jewelery" products={jewelery} />
 
-            <div className="pb-5">
-                <ProductRows categoryName="Women's clothing" products={womensClothing} />
-            </div>
-        </div>
+                        <ProductRows categoryName="Men's clothing" products={mensClothing} />
+
+                        <div className="pb-5">
+                            <ProductRows categoryName="Women's clothing" products={womensClothing} />
+                        </div>
+                    </div>
+            }
+        </>
     )
 }
 

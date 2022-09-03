@@ -12,6 +12,7 @@ export default ProductsContext
 export const ProductsProvider = ({ children }) => {
     const [categories, setCategories] = useState([])
     const [allProducts, setAllProducts] = useState([])
+    const [searchResults, setSearchResults] = useState([])
     const [errors, setErrors] = useState('')
     const [cartState, cartDispatch] = useReducer(cartReducer, { cart: { cartItems: [], } })
 
@@ -70,12 +71,24 @@ export const ProductsProvider = ({ children }) => {
         }
     }
 
+    function searchItemInStore(keyword) {
+        let name = keyword.toLowerCase()
+
+        const results = allProducts.filter((item) => {
+            let itemName = item.title.toLowerCase()
+            return itemName.indexOf(name) !== -1
+        })
+        setSearchResults(results)
+    }
+
 
     let values = {
         categories,
         allProducts,
         cartState,
+        searchResults,
         cartDispatch,
+        searchItemInStore,
         errors
     }
 

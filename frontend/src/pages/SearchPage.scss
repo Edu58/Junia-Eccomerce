@@ -1,0 +1,22 @@
+.search-page {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 2rem;
+  min-height: 50vh;
+
+  .search-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 2rem;
+    place-items: center;
+
+    .search-product {
+      a {
+        img {
+          max-height: 8rem;
+          max-width: 8rem;
+        }
+      }
+    }
+  }
+}
