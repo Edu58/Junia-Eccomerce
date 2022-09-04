@@ -1,5 +1,5 @@
 .top-bar {
-  background-color: #FFF;
+  background-color: #fff;
 
   .container {
     display: grid;
@@ -25,7 +25,6 @@
   }
 
   .account {
-
     a {
       text-decoration: none;
       color: #000;
@@ -33,6 +32,38 @@
 
     span {
       font-weight: 600;
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .help {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .top-bar {
+     background-color: #f09116;
+     position:static;
+     width: 100vw;
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+
+      a {
+        color: #fff !important;
+      }
+
+      .search {
+        display: none;
+      }
+
+      .account,
+      span {
+        display: none;
+      }
     }
   }
 }

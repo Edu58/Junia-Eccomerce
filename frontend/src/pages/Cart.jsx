@@ -28,7 +28,7 @@ const Cart = () => {
                                 return (
                                     <Card key={item.id}>
                                         <div className="product d-flex flex-column py-2">
-                                            <div className="d-flex justify-content-between">
+                                            <div className="image-price d-flex justify-content-between">
                                                 <div className='image d-flex'>
                                                     <img src={item.image} alt="" className="img-fluid rounded" />
                                                     <p className="ms-2">{item.title}</p>

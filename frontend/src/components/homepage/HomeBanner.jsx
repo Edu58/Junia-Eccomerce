@@ -3,6 +3,7 @@ import Categories from '../Categories';
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 import { TbTruckReturn } from "react-icons/tb";
 import { GiTakeMyMoney } from "react-icons/gi";
+import HomeCarousel from './HomeCarousel'
 
 
 const HomeBanner = ({ categories, banner }) => {
@@ -12,10 +13,11 @@ const HomeBanner = ({ categories, banner }) => {
     return (
 
         <div className='bannerDiv container pt-4'>
-            <Categories categories={categories} />
+            <Categories categories={categories} id="categories-card" />
             <div className="banner card">
                 <div className="card-body">
-                    {banner ? <img src={banner.image} className='rounded img-fluid' /> : ''}
+                    {/* {banner ? <img src={banner.image} className='rounded img-fluid' /> : ''} */}
+                    <HomeCarousel />
                 </div>
             </div>
             <div className="help-center">

@@ -27,8 +27,8 @@ const SearchBar = () => {
     return (
         <div className="top-bar py-4">
             <div className="container">
-                <Link to="/" className='text-decoration-none'>
-                    <p className='fs-3 fw-bolder text-dark'>Junia</p>
+                <Link to="/" className='brand text-decoration-none text-dark'>
+                    <p className='fs-3 fw-bolder'>Junia</p>
                 </Link>
                 <div className="search">
                     <form className='d-flex' onSubmit={searchFormHandler}>
@@ -46,7 +46,7 @@ const SearchBar = () => {
                             </div>
                         </Link>
                     </div>
-                    <div>
+                    <div className='help'>
                         <Link to="/cart">
                             <div className="d-flex align-items-center ms-4" role="button">
                                 <AiOutlineQuestionCircle size={25} />

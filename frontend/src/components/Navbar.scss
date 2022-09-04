@@ -10,3 +10,9 @@
     background-color: rgb(236, 77, 38);
   }
 }
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    display: none !important;
+  }
+}

@@ -11,7 +11,6 @@
   }
 
   .banner img {
-    width: auto;
     max-height: 30rem;
   }
 
@@ -19,5 +18,16 @@
     object-fit: cover;
     width: 100%;
     height: auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .bannerDiv {
+   display: block;
+  }
+
+  .help-center {
+    display: none;
   }
 }

@@ -44,3 +44,12 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
+
+@media screen and (max-width: 768px) {
+  .container.email-div,
+  .container.services,
+  .container.joinus {
+    display: grid;
+    grid-template-columns: auto;
+  }
+}
