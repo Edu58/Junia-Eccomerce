@@ -1,10 +1,10 @@
 import './Footer.scss'
 import { AiFillApple } from "react-icons/ai";
 import { IoLogoGooglePlaystore } from "react-icons/io5";
-import { FaFacebookF } from "react-icons/fa";
+import { FaFacebookF, FaStripe } from "react-icons/fa";
 import { TiSocialInstagram } from "react-icons/ti";
 import { BsYoutube } from "react-icons/bs";
-import { SiVisa, SiMastercard } from "react-icons/si";
+import { BsPaypal } from "react-icons/bs";
 
 
 
@@ -16,10 +16,10 @@ const Footer = () => {
 	return (
 		<div className='pt-3 bg-dark text-light pb-5'>
 			<div className="container email-div py-3">
-				<p className="fs-3 fw-bold">JUMIA</p>
+				<p className="fs-3 fw-bold">JUNIA</p>
 
 				<div className="subscribe pe-5">
-					<small className="fw-bold">NEW TO JUMIA?</small>
+					<small className="fw-bold">NEW TO JUNIA?</small>
 					<br />
 					<small>Subscribe to our newletter to get updates on our latest offer!</small>
 					<div className="input d-flex pt-2">
@@ -30,7 +30,7 @@ const Footer = () => {
 				</div>
 
 				<div className="download">
-					<small className="fw-bold">DOWNLOAD JUMIA FREE APP</small>
+					<small className="fw-bold">DOWNLOAD JUNIA FREE APP</small>
 					<br />
 					<small>Get access to exclusive offers</small>
 
@@ -119,18 +119,18 @@ const Footer = () => {
 					<small className="fw-bold">JOIN US ON</small>
 
 					<div className="d-flex mt-2">
-						<FaFacebookF style={socialIconsStyles} className="me-4"/>
-						<TiSocialInstagram style={socialIconsStyles} className="me-4"/>
-						<BsYoutube style={socialIconsStyles}/>
+						<FaFacebookF style={socialIconsStyles} className="me-4" />
+						<TiSocialInstagram style={socialIconsStyles} className="me-4" />
+						<BsYoutube style={socialIconsStyles} />
 					</div>
 
 				</div>
 				<div className="payments">
 					<small className="fw-bold">PAYMENT METHODS</small>
-					
+
 					<div className="d-flex mt-2">
-						<SiVisa style={socialIconsStyles} className="me-4"/>
-						<SiMastercard style={socialIconsStyles}/>
+						<BsPaypal style={socialIconsStyles} className="me-4" />
+						<FaStripe style={socialIconsStyles} />
 					</div>
 				</div>
 			</div>

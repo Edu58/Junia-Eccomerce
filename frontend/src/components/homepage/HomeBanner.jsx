@@ -1,5 +1,5 @@
 import './HomeBanner.scss'
-import Categories from '../Categories';
+import Categories from '../categories/Categories';
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 import { TbTruckReturn } from "react-icons/tb";
 import { GiTakeMyMoney } from "react-icons/gi";
@@ -26,7 +26,7 @@ const HomeBanner = ({ categories, banner }) => {
                         <div className="help mb-3 d-flex align-items-center">
                             <AiOutlineQuestionCircle style={iconStyles} />
                             <div className='ms-2'>
-                                <span className='fw-bold'>Help Center</span>
+                                <span>Help Center</span>
                                 <br />
                                 <small>Guide to customer care</small>
                             </div>
@@ -34,7 +34,7 @@ const HomeBanner = ({ categories, banner }) => {
                         <div className="return mb-3 d-flex align-items-center">
                             <TbTruckReturn style={iconStyles} />
                             <div className='ms-2'>
-                                <span className='fw-bold'>Easy Return</span>
+                                <span>Easy Return</span>
                                 <br />
                                 <small>Quick Refund</small>
                             </div>
@@ -42,7 +42,7 @@ const HomeBanner = ({ categories, banner }) => {
                         <div className="sell d-flex align-items-center">
                             <GiTakeMyMoney style={iconStyles} />
                             <div className='ms-2'>
-                                <span className='fw-bold'>Sell on Jumia</span>
+                                <span>Sell on Junia</span>
                                 <br />
                                 <small>Millions of Customers</small>
                             </div>

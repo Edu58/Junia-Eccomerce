@@ -1,9 +1,9 @@
 import './Homepage.scss'
-import Errors from '../components/Errors'
-import HomeBanner from '../components/homepage/HomeBanner'
-import ProductRows from '../components/homepage/ProductRows'
+import Errors from '../../components/errors/Errors'
+import HomeBanner from '../../components/homepage/HomeBanner'
+import ProductRows from '../../components/homepage/ProductRows'
 import { useContext } from 'react'
-import ProductsContext from '../context/products'
+import ProductsContext from '../../context/products'
 import { useEffect } from 'react'
 import { useState } from 'react'
 

@@ -1,16 +1,15 @@
 import './Product.scss'
-import banner from '../assets/alex-unsplash.jpg'
 import { TbTruckReturn } from "react-icons/tb";
 import { FaFacebookF } from "react-icons/fa";
 import { FaTwitter } from 'react-icons/fa';
 import { TiSocialInstagram } from "react-icons/ti";
-import ProductRows from '../components/homepage/ProductRows';
+import ProductRows from '../../components/homepage/ProductRows';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useContext } from 'react';
-import ProductsContext from '../context/products';
-import axiosClient from '../components/Axios';
+import ProductsContext from '../../context/products';
+import axiosClient from '../../components/Axios';
 import { useState } from 'react';
 
 const Product = () => {
@@ -26,7 +25,7 @@ const Product = () => {
 	useEffect(() => {
 		const singleProduct = allProducts.find(x => x.id == id)
 		singleProduct ? setProduct(singleProduct) : setProduct({})
-	}, [allProducts])
+	}, [])
 
 	const addToCartHandler = () => {
 		const itemExists = cartState.cart.cartItems.find((x) => x.id === product.id)
@@ -143,8 +142,18 @@ const Product = () => {
 								</p>
 
 								<p className="fw-bold perfomance">Seller Perfomance</p>
-								<span>Order fulfillment rate: Good</span> <br />
-								<span>Quality score: Good</span> <br />
+								<span>Quality score: &nbsp;
+									{
+										product.rating ? (
+											product.rating.rate < 2 ? <span className='text-danger'>Very Poor</span>
+												: product.rating.rate < 3 ? <span className='text-warning'>Poor</span>
+													: product.rating.rate < 4 ? <span className='text-secondary'>Good</span>
+														: product.rating.rate < 5 ? <span className='text-dark'>Very good</span>
+															: product.rating.rate >= 5 ? <span className='text-success'>Amazing</span>
+																: 'unknown'
+										) : 'unknown'
+									}
+								</span> <br />
 								<span>Customer rating: {product.rating ? product.rating.rate : 0}</span>
 							</div>
 						</div>

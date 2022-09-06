@@ -21,6 +21,7 @@ const SearchBar = () => {
         e.preventDefault()
 
         searchItemInStore(searchTerm)
+
         navigate('/search')
     }
 
@@ -32,7 +33,7 @@ const SearchBar = () => {
                 </Link>
                 <div className="search">
                     <form className='d-flex' onSubmit={searchFormHandler}>
-                        <input type="search" name="product" className='form-control' placeholder='search products' onChange={(e) => setSearchTerm(e.target.value)} required />
+                        <input type="search" name="product" className='form-control' placeholder='search products' onChange={(e) => setSearchTerm(e.target.value)} defaultValue={searchTerm} required />
                         <button type='submit' className="btn text-light fw-bold ms-2">search</button>
                     </form>
                 </div>
@@ -43,14 +44,6 @@ const SearchBar = () => {
                             <div className="d-flex align-items-center" role="button">
                                 <BiUser size={25} />
                                 <span className='ms-2'>Account</span>
-                            </div>
-                        </Link>
-                    </div>
-                    <div className='help'>
-                        <Link to="/cart">
-                            <div className="d-flex align-items-center ms-4" role="button">
-                                <AiOutlineQuestionCircle size={25} />
-                                <span className='ms-2'>Help</span>
                             </div>
                         </Link>
                     </div>

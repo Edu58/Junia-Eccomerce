@@ -1,29 +1,34 @@
 import './App.scss'
 import { Routes, Route } from 'react-router-dom'
-import Navbar from './components/Navbar'
-import SearchBar from './components/homepage/SearchBar'
-import Homepage from './pages/Homepage'
-import Footer from './components/Footer'
-import Product from './pages/Product'
-import Cart from './pages/Cart'
-import SearchPage from './pages/SearchPage'
-import ByCategory from './pages/ByCategory'
+import Homepage from './pages/homepage/Homepage'
+import Product from './pages/product/Product'
+import Cart from './pages/cart/Cart'
+import SearchPage from './pages/searchPage/SearchPage'
+import ByCategory from './pages/byCategory/ByCategory'
+import Login from './pages/login/Login'
+import WithoutNav from './utils/WithoutNav'
+import WithNav from './utils/withNav'
+import Signup from './pages/signup/Signup'
 
 function App() {
 
   return (
     <div className='app-container'>
-      <Navbar />
-      <SearchBar />
       <Routes>
 
-        <Route index element={<Homepage />}></Route>
-        <Route path='/product/:category/:id' element={<Product />}></Route>
-        <Route path='/cart' element={<Cart />}></Route>
-        <Route path='/search' element={<SearchPage />}></Route>
-        <Route path='/:category' element={<ByCategory />}></Route>
+        <Route element={<WithoutNav />}>
+          <Route path='/login' element={<Login />}></Route>
+          <Route path='/signup' element={<Signup />}></Route>
+        </Route>
+
+        <Route element={<WithNav />}>
+          <Route index element={<Homepage />}></Route>
+          <Route path='/product/:category/:id' element={<Product />}></Route>
+          <Route path='/cart' element={<Cart />}></Route>
+          <Route path='/search' element={<SearchPage />}></Route>
+          <Route path='/:category' element={<ByCategory />}></Route>
+        </Route>
       </Routes>
-      <Footer />
     </div>
   )
 }

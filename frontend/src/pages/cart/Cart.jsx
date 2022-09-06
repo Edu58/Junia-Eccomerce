@@ -1,8 +1,8 @@
 import './Cart.scss'
-import Card from "../components/Card"
-import ProductRows from '../components/homepage/ProductRows'
+import Card from '../../components/card/Card'
+import ProductRows from '../../components/homepage/ProductRows'
 import { useContext } from 'react'
-import ProductsContext from '../context/products'
+import ProductsContext from '../../context/products'
 
 const Cart = () => {
 

@@ -1,9 +1,8 @@
 import './Categories.scss'
-import Card from './Card'
-import { FiSmartphone } from "react-icons/fi";
+import { BsBagCheck } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
-import ProductsContext from '../context/products';
+import ProductsContext from '../../context/products';
 
 const Categories = ({ categories }) => {
 
@@ -20,7 +19,7 @@ const Categories = ({ categories }) => {
                                 return (
                                     <li key={i}>
                                         <Link to={`/${category}`} onClick={() => filterByCategory(category)} className='small text-decoration-none text-dark'>
-                                            <FiSmartphone className='me-2' />{category}
+                                            <BsBagCheck className='me-2' />{category}
                                         </Link>
                                     </li>
                                 )

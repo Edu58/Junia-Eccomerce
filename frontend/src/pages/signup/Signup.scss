@@ -1,0 +1,18 @@
+.signup-card {
+  padding-top: 25vh;
+  min-height: 100vh;
+
+  .card {
+    max-width: 30rem;
+
+    .card-header {
+      color: #f09116;
+    }
+
+    .card-body {
+      button {
+        background-color: #f09116;
+      }
+    }
+  }
+}
