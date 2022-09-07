@@ -54,8 +54,11 @@ const SearchBar = () => {
                             <div className="d-flex align-items-center ms-4 text-light" role="button">
                                 <HiOutlineShoppingCart size={25} />
                                 <span className='fw-bold'>Cart</span>
-                                <sup className='fs-6 badge bg-secondary'>
-                                    {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}</sup>
+                                {
+                                    cart.cartItems.length > 0 ? <sup className='fs-6 badge bg-secondary'>
+                                        {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+                                    </sup> : ''
+                                }
                             </div>
                         </Link>
                     </div>
