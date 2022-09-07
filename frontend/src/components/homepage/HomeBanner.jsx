@@ -16,7 +16,6 @@ const HomeBanner = ({ categories, banner }) => {
             <Categories categories={categories} id="categories-card" />
             <div className="banner card">
                 <div className="card-body">
-                    {/* {banner ? <img src={banner.image} className='rounded img-fluid' /> : ''} */}
                     <HomeCarousel />
                 </div>
             </div>

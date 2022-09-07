@@ -20,7 +20,7 @@ function HomeCarousel() {
             {
                 products.map((product) => {
                     return (
-                        <Carousel.Item key={product.id}>
+                        <Carousel.Item key={product._id}>
                             <img
                                 className="img-fluid"
                                 src={product.image}
