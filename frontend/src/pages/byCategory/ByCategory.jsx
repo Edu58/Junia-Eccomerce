@@ -24,8 +24,8 @@ const ByCategory = () => {
                         <div className="search-results">
                             {productsByCategory.map((product) => {
                                 return (
-                                    <div className='search-product' key={product.id}>
-                                        <Link to={`/product/${product.category}/${product.id}`} className='text-decoration-none text-dark'>
+                                    <div className='search-product' key={product._id}>
+                                        <Link to={`/product/${product.category}/${product._id}`} className='text-decoration-none text-dark'>
 
                                             <img src={product.image} alt="" className='img-fluid rounded' />
 

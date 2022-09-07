@@ -15,11 +15,11 @@ const Categories = ({ categories }) => {
                     {
                         categories
                             ?
-                            categories.map((category, i) => {
+                            categories.map((category) => {
                                 return (
-                                    <li key={i}>
-                                        <Link to={`/${category}`} onClick={() => filterByCategory(category)} className='small text-decoration-none text-dark'>
-                                            <BsBagCheck className='me-2' />{category}
+                                    <li key={category._id}>
+                                        <Link to={`/${category.name}`} onClick={() => filterByCategory(category.name)} className='small text-decoration-none text-dark'>
+                                            <BsBagCheck className='me-2' />{category.name}
                                         </Link>
                                     </li>
                                 )

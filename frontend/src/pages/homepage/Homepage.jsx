@@ -17,13 +17,13 @@ const Homepage = () => {
 
     useEffect(() => {
         allProducts.map((item) => {
-            if (item.category == 'electronics') {
+            if (item.category.name == 'electronics') {
                 setElectronics(current => [...current, item])
-            } else if (item.category == 'jewelery') {
+            } else if (item.category.name == 'jewelery') {
                 setJewelery(current => [...current, item])
-            } else if (item.category == "men's clothing") {
+            } else if (item.category.name == "men's clothing") {
                 setMensClothing(current => [...current, item])
-            } else if (item.category == "women's clothing") {
+            } else if (item.category.name == "women's clothing") {
                 setWomensClothing(current => [...current, item])
             }
         })

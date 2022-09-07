@@ -3,6 +3,7 @@ import ProductsContext from '../../context/products';
 import Carousel from 'react-bootstrap/Carousel';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function HomeCarousel() {
 
@@ -21,10 +22,12 @@ function HomeCarousel() {
                 products.map((product) => {
                     return (
                         <Carousel.Item key={product._id}>
-                            <img
-                                className="img-fluid"
-                                src={product.image}
-                            />
+                            <Link to={`/product/${product.category.name}/${product._id}`} className='text-decoration-none text-dark'>
+                                <img
+                                    className="img-fluid"
+                                    src={product.image}
+                                />
+                            </Link>
                         </Carousel.Item>
                     )
                 })

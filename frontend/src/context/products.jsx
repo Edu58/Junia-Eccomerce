@@ -91,7 +91,7 @@ export const ProductsProvider = ({ children }) => {
 
     function filterByCategory(category) {
         const results = allProducts.filter((item) => {
-            return item.category == category.toLowerCase()
+            return item.category.name == category.toLowerCase()
         })
         setProductsByCategory(results)
     }

@@ -21,7 +21,6 @@ app.use(cookieParser()) //get access to cookies
 
 // routes
 app.use('/', require('./routes/store'))
-app.use('/db', require('./routes/seedDB'))
 app.use('/auth', require('./routes/authentication'))
 
 // start server
