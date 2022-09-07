@@ -1,11 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const verifyJWT = require('../middleware/verifyJWT')
-const products = require('../data')
+const Product = require('../models/Product')
+const { getAllProducts } = require('../controllers/productsController')
 
-router.get('/products', (req, res) => {
-    res.send(products)
-})
+router.get('/products', getAllProducts)
 
 router.get('/products/categories', (req, res) => {
     res.json(

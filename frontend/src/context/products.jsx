@@ -39,6 +39,7 @@ export const ProductsProvider = ({ children }) => {
             try {
                 const result = await axiosClient('/products')
                 setAllProducts(result.data)
+                console.log(result.data)
             } catch (error) {
                 setErrors(error.message)
                 console.log(error.message)
