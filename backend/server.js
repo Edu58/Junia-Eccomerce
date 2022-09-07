@@ -2,13 +2,18 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const connectDB = require('./config/dbConnection')
+const cors = require('cors')
+const corsConfig = require('./config/corsConfig')
 const cookieParser = require('cookie-parser')
 
 // connect to db before anything else
 connectDB()
 
 const app = express()
-const PORT = 6000
+const PORT = 4000
+
+// solve cors errors
+app.use(cors(corsConfig))
 
 app.use(express.urlencoded({ extended: false })) // get access to body of request/form-data
 app.use(express.json()) // get json in request
