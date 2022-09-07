@@ -9,6 +9,9 @@ import Login from './pages/login/Login'
 import WithoutNav from './utils/WithoutNav'
 import WithNav from './utils/withNav'
 import Signup from './pages/signup/Signup'
+import Shipping from './pages/shipping/Shipping'
+import PaymentMethod from './pages/payment_method/PaymentMethod'
+import PlaceOrder from './pages/place_order/PlaceOrder'
 
 function App() {
 
@@ -27,6 +30,9 @@ function App() {
           <Route path='/cart' element={<Cart />}></Route>
           <Route path='/search' element={<SearchPage />}></Route>
           <Route path='/:category' element={<ByCategory />}></Route>
+          <Route path='/shipping' element={<Shipping />}></Route>
+          <Route path='/payment-method' element={<PaymentMethod />}></Route>
+          <Route path='/place-order' element={<PlaceOrder />}></Route>
         </Route>
       </Routes>
     </div>

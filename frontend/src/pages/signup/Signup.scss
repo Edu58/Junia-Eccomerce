@@ -1,17 +1,44 @@
 .signup-card {
-  padding-top: 25vh;
+  padding-top: 10vh;
   min-height: 100vh;
 
   .card {
-    max-width: 30rem;
+    max-width: 45rem;
 
     .card-header {
-      color: #f09116;
+      background-color: #f09116;
     }
 
     .card-body {
+      .contents {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 20rem;
+        align-items: center;
+      }
+
+      .login-card-image img {
+        max-height: 20rem;
+      }
+
       button {
         background-color: #f09116;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .signup-card {
+    .card {
+      .card-body {
+        .contents {
+          display: block;
+
+          .signup-card-image img {
+            display: none;
+          }
+        }
       }
     }
   }

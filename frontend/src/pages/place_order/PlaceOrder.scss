@@ -1,0 +1,35 @@
+.place-order {
+  .card {
+    .card-body {
+      .place-order-preview {
+        display: grid;
+        grid-template-columns: 2.5fr 1fr;
+        gap: 2rem;
+
+        .items {
+          .card {
+            max-height: 10rem;
+
+            .product {
+              .image-price {
+                display: grid;
+                grid-template-columns: 2.5fr .5fr 1fr;
+                gap: 1rem;
+              }
+              .image img {
+                max-height: 4rem;
+                width: auto;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .order-price-summary {
+      button {
+        background-color: #f09116;
+      }
+    }
+  }
+}

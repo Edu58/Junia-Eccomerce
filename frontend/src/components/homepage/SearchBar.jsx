@@ -29,29 +29,31 @@ const SearchBar = () => {
         <div className="top-bar py-4">
             <div className="container">
                 <Link to="/" className='brand text-decoration-none text-dark'>
-                    <p className='fs-3 fw-bolder'>Junia</p>
+                    <p className='fs-3 fw-bolder text-light'>Junia</p>
                 </Link>
                 <div className="search">
                     <form className='d-flex' onSubmit={searchFormHandler}>
                         <input type="search" name="product" className='form-control' placeholder='search products' onChange={(e) => setSearchTerm(e.target.value)} defaultValue={searchTerm} required />
-                        <button type='submit' className="btn text-light fw-bold ms-2">search</button>
+                        <button type='submit' className="btn fw-bold ms-2">search</button>
                     </form>
                 </div>
 
-                <div className='account d-flex'>
-                    <div>
-                        <Link to="/cart">
-                            <div className="d-flex align-items-center" role="button">
-                                <BiUser size={25} />
-                                <span className='ms-2'>Account</span>
-                            </div>
-                        </Link>
+                <div className='account d-flex align-items-center'>
+                    <div className="dropdown">
+                        <button className="btn dropdown-toggle text-light border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <BiUser size={25} />
+                            <span className='ms-2'>Account</span>
+                        </button>
+                        <ul className="dropdown-menu text-center py-3">
+                            <li className='mb-3'><Link to="/login">Login</Link></li>
+                            <li><Link to="/signup">Register</Link></li>
+                        </ul>
                     </div>
                     <div>
-                        <Link to="/cart">
-                            <div className="d-flex align-items-center ms-4" role="button">
+                        <Link to="/cart" className='text-decoration-none text-dark'>
+                            <div className="d-flex align-items-center ms-4 text-light" role="button">
                                 <HiOutlineShoppingCart size={25} />
-                                <span className=''>Cart</span>
+                                <span className='fw-bold'>Cart</span>
                                 <sup className='fs-6 badge bg-secondary'>
                                     {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}</sup>
                             </div>

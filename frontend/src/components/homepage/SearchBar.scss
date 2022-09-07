@@ -1,5 +1,6 @@
 .top-bar {
-  background-color: #fff;
+ background-color: #f09116;
+ color: #FFF;
 
   .container {
     display: grid;
@@ -21,26 +22,34 @@
   }
 
   .search button {
-    background-color: #f09116;
+    border: 1px solid #FFF;
+    color: #FFF;
+    transition: .2s all;
+  }
+
+  .search button:hover {
+    background-color: #FFF;
+    color: #f09116;
   }
 
   .account {
-    a {
-      text-decoration: none;
-      color: #000;
-    }
+    .dropdown {
+      a {
+        text-decoration: none;
+        color: #f09116;
+      }
 
-    span {
-      font-weight: 600;
+      span {
+        font-weight: 600;
+      }
     }
   }
 }
 
 @media screen and (max-width: 768px) {
   .top-bar {
-     background-color: #f09116;
-     position:static;
-     width: 100vw;
+    position: static;
+    width: 100vw;
 
     .container {
       display: flex;
@@ -52,6 +61,16 @@
 
       .search {
         display: none;
+      }
+
+      .account .dropdown {
+        button {
+          color: #fff;
+        }
+
+        ul li a {
+          color: #f09116 !important;
+        }
       }
 
       .account,

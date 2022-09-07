@@ -3,10 +3,13 @@ import Card from '../../components/card/Card'
 import ProductRows from '../../components/homepage/ProductRows'
 import { useContext } from 'react'
 import ProductsContext from '../../context/products'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Cart = () => {
 
     const { cartState, cartDispatch } = useContext(ProductsContext)
+
+    const navigate = useNavigate()
 
     const updateQuantityHandler = (item, quantity) => {
         quantity > 0 ? cartDispatch({ type: "ADD_TO_CART", payload: { ...item, quantity } }) : null
@@ -14,6 +17,10 @@ const Cart = () => {
 
     const deleteItemFromCartHandler = (item) => {
         cartDispatch({ type: "DELETE_FROM_CART", payload: item })
+    }
+
+    const handleCheckout = () => {
+        Object.keys(cartState.userInfo).length <= 0 ? navigate('/login') : navigate('/shipping')
     }
 
     return (
@@ -55,7 +62,7 @@ const Cart = () => {
                                 )
                             })
                             :
-                            <p className='text-center fw-bold'>Your cart is empty</p>
+                            <p className='text-center fw-bold'>Your cart is empty <Link to='/'>Go Shopping</Link></p>
                         }
                     </div>
 
@@ -66,11 +73,15 @@ const Cart = () => {
                             <div className="d-flex justify-content-between align-items-center">
                                 <p className="small fw-bold">Subtotal</p>
                                 <p className="fs-4 fw-bold">
-                                    {cartState.cart.cartItems.reduce((a, c) => a + (c.price * c.quantity), 0).toFixed(2)}
+                                    Ksh {cartState.cart.cartItems.reduce((a, c) => a + (c.price * c.quantity), 0).toFixed(2)}
                                 </p>
                             </div>
 
-                            <button className='btn w-100'>Checkout ({cartState.cart.cartItems.reduce((a, c) => a + (c.price * c.quantity), 0).toFixed(2)})</button>
+
+                            <button className='btn w-100' onClick={handleCheckout} disabled={!cartState.cart.cartItems.length > 0}>
+                                Checkout ({cartState.cart.cartItems.reduce((a, c) => a + (c.price * c.quantity), 0).toFixed(2)})
+                            </button>
+
                         </Card>
                     </div>
                 </div>

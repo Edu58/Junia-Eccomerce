@@ -15,7 +15,14 @@ export const ProductsProvider = ({ children }) => {
     const [searchResults, setSearchResults] = useState([])
     const [productsByCategory, setProductsByCategory] = useState([])
     const [errors, setErrors] = useState('')
-    const [cartState, cartDispatch] = useReducer(cartReducer, { cart: { cartItems: [], } })
+    const [cartState, cartDispatch] = useReducer(cartReducer, {
+        userInfo: {},
+        cart: {
+            cartItems: [],
+            shippingAddress: {},
+            paymentMethod: {}
+        }
+    })
 
     useEffect(() => {
         const fetchCategories = async () => {

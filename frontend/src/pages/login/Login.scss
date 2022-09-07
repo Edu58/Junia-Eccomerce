@@ -1,17 +1,45 @@
 .login-card {
-  padding-top: 25vh;
+  padding-top: 10vh;
   min-height: 100vh;
 
   .card {
-    max-width: 30rem;
+    max-width: 45rem;
 
     .card-header {
-      color: #f09116;
+      background-color: #f09116;
     }
 
     .card-body {
+      .contents {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+      }
+
+      .login-card-img img {
+        max-height: 20rem;
+      }
+
       button {
         background-color: #f09116;
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 767px) {
+  .login-card {
+    .card {
+      .card-body {
+        .contents {
+          display: block;
+
+          .login-card-image img {
+            display: none;
+            background-color: red;
+          }
+        }
       }
     }
   }

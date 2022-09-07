@@ -30,7 +30,7 @@
 
 .container.services {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 
   ul {
     list-style: none !important;
@@ -42,7 +42,7 @@
 
 .container.joinus {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 }
 
 @media screen and (max-width: 768px) {

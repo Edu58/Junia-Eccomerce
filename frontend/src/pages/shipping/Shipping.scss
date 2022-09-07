@@ -1,0 +1,21 @@
+.shipping {
+  .card {
+    margin: auto;
+
+    .card-body {
+      max-width: 45rem;
+      margin: auto;
+      form {
+        .shipping-form-contents {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 2rem;
+        }
+
+        button {
+          background-color: #f09116;
+        }
+      }
+    }
+  }
+}

@@ -100,18 +100,6 @@ const Footer = () => {
 					</ul>
 
 				</div>
-				<div className="jumia">
-					<small className="fw-bold">JUNIA INTERNATIONAL</small>
-
-					<ul>
-						<li>Algeria</li>
-						<li>Ivory Coast</li>
-						<li>Egypt</li>
-						<li>Ghana</li>
-						<li>Morocco</li>
-						<li>Nigeria</li>
-					</ul>
-				</div>
 			</div>
 
 			<div className="container joinus mt-4">

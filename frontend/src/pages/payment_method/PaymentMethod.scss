@@ -1,0 +1,17 @@
+.payment-method {
+  .card {
+    min-height: 50vh;
+    margin: auto;
+
+    .card-body {
+      form {
+        margin: auto;
+        max-width: 10rem;
+
+        button {
+            background-color: #f09116;
+        }
+      }
+    }
+  }
+}
