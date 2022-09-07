@@ -10,7 +10,7 @@ const ProductRows = ({ categoryName, products }) => {
                 {products.map((product) => {
                     return (
                         <div className='product' key={product._id}>
-                            <Link to={`/product/${categoryName}/${product.id}`} className='text-decoration-none text-dark'>
+                            <Link to={`/product/${categoryName}/${product._id}`} className='text-decoration-none text-dark'>
 
                                 <img src={product.image} alt="" className='img-fluid rounded' />
 

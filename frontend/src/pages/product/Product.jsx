@@ -23,12 +23,12 @@ const Product = () => {
 	let socialIconsStyles = { fontSize: "1.5rem" };
 
 	useEffect(() => {
-		const singleProduct = allProducts.find(x => x.id == id)
+		const singleProduct = allProducts.find(x => x._id == id)
 		singleProduct ? setProduct(singleProduct) : setProduct({})
 	}, [])
 
 	const addToCartHandler = () => {
-		const itemExists = cartState.cart.cartItems.find((x) => x.id === product.id)
+		const itemExists = cartState.cart.cartItems.find((x) => x._id === product._id)
 		const quantity = itemExists ? itemExists.quantity + 1 : 1
 		cartDispatch({ type: 'ADD_TO_CART', payload: { ...product, quantity } })
 	}

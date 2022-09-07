@@ -33,7 +33,7 @@ const Cart = () => {
                             ?
                             cartState.cart.cartItems.map((item) => {
                                 return (
-                                    <Card key={item.id}>
+                                    <Card key={item._id}>
                                         <div className="product d-flex flex-column py-2">
                                             <div className="image-price d-flex justify-content-between">
                                                 <div className='image d-flex'>
