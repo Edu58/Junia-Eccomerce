@@ -15,8 +15,8 @@ app.use(express.json()) // get json in request
 app.use(cookieParser()) //get access to cookies
 
 // routes
+app.use('/', require('./routes/store'))
 app.use('/auth', require('./routes/authentication'))
-
 
 // start server
 mongoose.connection.once('connected', () => {
