@@ -14,7 +14,8 @@ const ProductSchema = new mongoose.Schema({
         required: true
     },
     category: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'ProductCategory',
         required: true
     },
     image: {
@@ -22,8 +23,8 @@ const ProductSchema = new mongoose.Schema({
         required: true
     },
     rating: {
-        rate: { type: Number, required: false },
-        count: { type: Number, required: false }
+        rate: { type: Number, min: 0, max: 5, required: false },
+        count: { type: Number, min: 0, required: false }
     },
     brand: {
         type: String,
@@ -31,6 +32,7 @@ const ProductSchema = new mongoose.Schema({
     },
     inStock: {
         type: Number,
+        min: 0,
         default: 50
     }
 })

@@ -1,20 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const verifyJWT = require('../middleware/verifyJWT')
-const Product = require('../models/Product')
-const { getAllProducts } = require('../controllers/productsController')
+const { getAllProducts, getProductsCategories, addProduct } = require('../controllers/productsController')
 
+router.get('/products/categories', getProductsCategories)
 router.get('/products', getAllProducts)
-
-router.get('/products/categories', (req, res) => {
-    res.json(
-        [
-            "electronics",
-            "jewelery",
-            "men's clothing",
-            "women's clothing"
-        ]
-    )
-})
+router.post('/products', addProduct)
 
 module.exports = router

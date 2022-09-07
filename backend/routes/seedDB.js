@@ -1,14 +1,14 @@
 const express = require('express')
 const router = express.Router()
-const Product = require('../models/Product')
+const ProductCategory = require('../models/ProductCategory')
 const data = require('../data')
 
 router.get('/seeddb', async (req, res) => {
-    await Product.remove({})
+    await ProductCategory.remove({})
 
-    const createdProducts = await Product.insertMany(data.products)
+    const createdCategories = await ProductCategory.insertMany(data.categories)
 
-    res.json({ createdProducts })
+    res.json({ createdCategories })
 })
 
 module.exports = router
