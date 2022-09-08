@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const connectDB = require('./config/dbConnection')
+const allowCredentials = require('./middleware/allowCredentials')
 const cors = require('cors')
 const corsConfig = require('./config/corsConfig')
 const cookieParser = require('cookie-parser')
@@ -11,6 +12,9 @@ connectDB()
 
 const app = express()
 const PORT = 4000
+
+// fix 'Access-Control-Allow-Credentials' error
+app.use(allowCredentials)
 
 // solve cors errors
 app.use(cors(corsConfig))
