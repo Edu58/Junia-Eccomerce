@@ -9,7 +9,7 @@ import ProductsContext from '../../context/products';
 
 const Login = () => {
 
-    const { cartState, cartDispatch } = useContext(ProductsContext)
+    const { authDetails, cartDispatch } = useContext(ProductsContext)
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
