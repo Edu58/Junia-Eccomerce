@@ -36,6 +36,7 @@
     .dropdown {
       ul {
         li {
+          word-wrap: break-word;
           :hover {
             color: #000;
           }

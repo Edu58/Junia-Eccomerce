@@ -45,12 +45,24 @@ const SearchBar = () => {
                             <span className='ms-2'>Account</span>
                         </button>
                         <ul className="dropdown-menu text-center py-3">
-                            <li className='mb-2'><Link to="/login">profile</Link></li>
-                            <li className='mb-2'><Link to="/login">orders</Link></li>
-                            <li className='mb-2'><Link to="/login">login</Link></li>
-                            <li><Link to="/signup">register</Link></li>
+                            {
+                                cartState.userInfo.email
+                                    ?
+                                    <>
+                                        <li className='mb-2'><Link to="/login">profile</Link></li>
+                                        <li className='mb-2'><Link to="/login">orders</Link></li>
+                                        <li className='small mb-2'>welcome, {cartState.userInfo.email}</li>
+                                        <li className='mt-4 text-danger fw-bold'>logout</li>
+                                    </>
+                                    :
+                                    <>
+                                        <li className='mb-2'><Link to="/login">login</Link></li>
+                                        <li><Link to="/signup">register</Link></li>
+                                    </>
+                            }
                         </ul>
                     </div>
+
                     <div>
                         <Link to="/cart" className='text-decoration-none text-dark'>
                             <div className="d-flex align-items-center ms-4 text-light" role="button">
