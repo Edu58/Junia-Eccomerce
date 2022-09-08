@@ -55,12 +55,12 @@ export const ProductsProvider = ({ children }) => {
             case "ADD_TO_CART":
                 const newItem = action.payload
                 const itemsExists = state.cart.cartItems.find((item) =>
-                    item.id == newItem.id
+                    item._id == newItem._id
                 )
 
                 const cartItems = itemsExists
                     ? state.cart.cartItems.map((item) =>
-                        item.id == itemsExists.id ? newItem : item
+                        item._id == itemsExists._id ? newItem : item
                     )
                     :
                     [...state.cart.cartItems, newItem]
@@ -69,7 +69,7 @@ export const ProductsProvider = ({ children }) => {
 
             case "DELETE_FROM_CART": {
                 const cartItems = state.cart.cartItems.filter((item) =>
-                    item.id !== action.payload.id
+                    item._id !== action.payload._id
                 )
 
                 return { ...state, cart: { ...state.cart, cartItems } }

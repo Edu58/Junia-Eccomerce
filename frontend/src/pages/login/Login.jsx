@@ -1,7 +1,7 @@
 import './Login.scss'
 import toast, { Toaster } from 'react-hot-toast';
 import jwt_decode from "jwt-decode";
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import loginImage from '../../assets/images/login-card-image.jpg'
 import { useState, useContext } from 'react'
 import axiosClient from '../../components/Axios'
@@ -16,6 +16,10 @@ const Login = () => {
     const [errorMessage, setErrorMessage] = useState('')
 
     const navigate = useNavigate()
+
+    const location = useLocation()
+
+    const from = location.state?.from?.pathname || "/"
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -37,7 +41,8 @@ const Login = () => {
                 payload: userInfo
             })
 
-            navigate('/')
+            navigate(from, { replace: true })
+
         } catch (error) {
             setErrorMessage(error?.response?.data?.message)
             toast.error(`${error?.response?.data?.message}`)

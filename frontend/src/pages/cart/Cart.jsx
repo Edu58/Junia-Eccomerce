@@ -78,9 +78,11 @@ const Cart = () => {
                             </div>
 
 
-                            <button className='btn w-100' onClick={handleCheckout} disabled={!cartState.cart.cartItems.length > 0}>
-                                Checkout ({cartState.cart.cartItems.reduce((a, c) => a + (c.price * c.quantity), 0).toFixed(2)})
-                            </button>
+                            <Link to='/shipping'>
+                                <button className='btn w-100' onClick={handleCheckout} disabled={!cartState.cart.cartItems.length > 0}>
+                                    Checkout ({cartState.cart.cartItems.reduce((a, c) => a + (c.price * c.quantity), 0).toFixed(2)})
+                                </button>
+                            </Link>
 
                         </Card>
                     </div>
