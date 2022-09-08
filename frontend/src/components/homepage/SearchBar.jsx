@@ -45,8 +45,10 @@ const SearchBar = () => {
                             <span className='ms-2'>Account</span>
                         </button>
                         <ul className="dropdown-menu text-center py-3">
-                            <li className='mb-3'><Link to="/login">Login</Link></li>
-                            <li><Link to="/signup">Register</Link></li>
+                            <li className='mb-2'><Link to="/login">profile</Link></li>
+                            <li className='mb-2'><Link to="/login">orders</Link></li>
+                            <li className='mb-2'><Link to="/login">login</Link></li>
+                            <li><Link to="/signup">register</Link></li>
                         </ul>
                     </div>
                     <div>

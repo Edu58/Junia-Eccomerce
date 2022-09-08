@@ -1,6 +1,6 @@
 .top-bar {
- background-color: #f09116;
- color: #FFF;
+  background-color: #f09116;
+  color: #fff;
 
   .container {
     display: grid;
@@ -22,21 +22,28 @@
   }
 
   .search button {
-    border: 1px solid #FFF;
-    color: #FFF;
-    transition: .2s all;
+    border: 1px solid #fff;
+    color: #fff;
+    transition: 0.2s all;
   }
 
   .search button:hover {
-    background-color: #FFF;
+    background-color: #fff;
     color: #f09116;
   }
 
   .account {
     .dropdown {
-      a {
-        text-decoration: none;
-        color: #f09116;
+      ul {
+        li {
+          :hover {
+            color: #000;
+          }
+          a {
+            text-decoration: none;
+            color: #f09116;
+          }
+        }
       }
 
       span {
