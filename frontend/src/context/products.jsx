@@ -87,6 +87,8 @@ export const ProductsProvider = ({ children }) => {
                     withCredentials: true
                 })
 
+                localStorage.setItem('status', '0')
+
                 return {
                     ...state,
                     userInfo: {},

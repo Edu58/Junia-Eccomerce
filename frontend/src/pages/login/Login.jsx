@@ -42,6 +42,8 @@ const Login = () => {
                 payload: userInfo
             })
 
+            localStorage.setItem('status', '1')
+
             navigate(from, { replace: true })
 
         } catch (error) {

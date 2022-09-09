@@ -22,7 +22,8 @@ const persistLogin = () => {
             }
         }
 
-        authToken ? setIsLoading(false) : verifyIfHasToken()
+        !authToken && localStorage.getItem('status') === '1' ? verifyIfHasToken() : setIsLoading(false)
+
     }, [])
 
     return (
