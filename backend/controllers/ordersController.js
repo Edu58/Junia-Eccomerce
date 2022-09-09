@@ -13,7 +13,7 @@ const createOrder = async (req, res) => {
             itemsPrice: data.itemsPrice,
             taxPrice: data.taxPrice,
             totalPrice: data.totalPrice,
-            user: req.user._id
+            user: req.user_id
         })
 
         const order = await newOrder.save()
