@@ -76,6 +76,16 @@ export const ProductsProvider = ({ children }) => {
                 return { ...state, cart: { ...state.cart, cartItems } }
             }
 
+            case "ADD_SHIPPING": {
+                return {
+                    ...state,
+                    cart: {
+                        ...state.cart,
+                        shippingAddress: action.payload
+                    }
+                }
+            }
+
             case "USER_LOGIN": {
                 return { ...state, userInfo: action.payload }
             }
