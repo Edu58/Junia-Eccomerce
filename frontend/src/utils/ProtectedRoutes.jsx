@@ -4,13 +4,12 @@ import ProductsContext from "../context/products";
 
 
 const ProtectedRoutes = () => {
-    const { cartState } = useContext(ProductsContext)
-    const { userInfo } = cartState
+    const { authToken } = useContext(ProductsContext)
 
     const location = useLocation()
 
     return (
-        userInfo.email ? <Outlet /> : <Navigate to='/login' state={{ from: location }} replace />
+        authToken ? <Outlet /> : <Navigate to='/login' state={{ from: location }} replace />
     )
 }
 

@@ -12,7 +12,7 @@ import { useState } from 'react';
 const SearchBar = () => {
     const [searchTerm, setSearchTerm] = useState('')
 
-    const { cartState, searchItemInStore } = useContext(ProductsContext)
+    const { cartState, searchItemInStore, authToken } = useContext(ProductsContext)
     const { cart } = cartState
 
     const navigate = useNavigate()
@@ -46,7 +46,7 @@ const SearchBar = () => {
                         </button>
                         <ul className="dropdown-menu text-center py-3">
                             {
-                                cartState.userInfo.email
+                                authToken
                                     ?
                                     <>
                                         <li className='mb-2'><Link to="/login">profile</Link></li>

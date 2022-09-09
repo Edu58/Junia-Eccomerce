@@ -9,7 +9,8 @@ import Login from './pages/login/Login'
 import WithoutNav from './utils/WithoutNav'
 import WithNav from './utils/withNav'
 import Signup from './pages/signup/Signup'
-import ProtectedRoutes from './components/ProtectedRoutes'
+import ProtectedRoutes from './utils/ProtectedRoutes'
+import PersistLogin from './components/PersistLogin'
 import Shipping from './pages/shipping/Shipping'
 import PaymentMethod from './pages/payment_method/PaymentMethod'
 import PlaceOrder from './pages/place_order/PlaceOrder'
@@ -25,20 +26,23 @@ function App() {
           <Route path='/signup' element={<Signup />}></Route>
         </Route>
 
-        <Route element={<WithNav />}>
+        <Route element={<PersistLogin />}>
+          <Route element={<WithNav />}>
 
-          <Route index element={<Homepage />}></Route>
-          <Route path='/product/:category/:id' element={<Product />}></Route>
-          <Route path='/cart' element={<Cart />}></Route>
-          <Route path='/search' element={<SearchPage />}></Route>
-          <Route path='/:category' element={<ByCategory />}></Route>
+            <Route index element={<Homepage />}></Route>
+            <Route path='/product/:category/:id' element={<Product />}></Route>
+            <Route path='/cart' element={<Cart />}></Route>
+            <Route path='/search' element={<SearchPage />}></Route>
+            <Route path='/:category' element={<ByCategory />}></Route>
 
-          <Route element={<ProtectedRoutes />}>
-            <Route path='/shipping' element={<Shipping />}></Route>
-            <Route path='/payment-method' element={<PaymentMethod />}></Route>
-            <Route path='/place-order' element={<PlaceOrder />}></Route>
+
+            <Route element={<ProtectedRoutes />}>
+              <Route path='/shipping' element={<Shipping />}></Route>
+              <Route path='/payment-method' element={<PaymentMethod />}></Route>
+              <Route path='/place-order' element={<PlaceOrder />}></Route>
+            </Route>
+
           </Route>
-
         </Route>
       </Routes>
     </div>
