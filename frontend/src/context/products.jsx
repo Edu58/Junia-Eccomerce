@@ -21,7 +21,7 @@ export const ProductsProvider = ({ children }) => {
         cart: {
             cartItems: [],
             shippingAddress: {},
-            paymentMethod: {}
+            paymentMethod: ''
         }
     })
 
@@ -32,7 +32,6 @@ export const ProductsProvider = ({ children }) => {
                 setCategories(result.data)
             } catch (error) {
                 setErrors(error.message)
-                console.log(error.message)
             }
         }
 
@@ -42,7 +41,6 @@ export const ProductsProvider = ({ children }) => {
                 setAllProducts(result.data)
             } catch (error) {
                 setErrors(error.message)
-                console.log(error.message)
             }
         }
 
@@ -86,8 +84,21 @@ export const ProductsProvider = ({ children }) => {
                 }
             }
 
+            case "ADD_PAYMENT_METHOD": {
+                return {
+                    ...state,
+                    cart: {
+                        ...state.cart,
+                        paymentMethod: action.payload
+                    }
+                }
+            }
+
             case "USER_LOGIN": {
-                return { ...state, userInfo: action.payload }
+                return {
+                    ...state,
+                    userInfo: action.payload
+                }
             }
 
             case "USER_LOGOUT": {
@@ -105,7 +116,7 @@ export const ProductsProvider = ({ children }) => {
                     cart: {
                         cartItems: [],
                         shippingAddress: {},
-                        paymentMethod: {}
+                        paymentMethod: ''
                     }
                 }
             }

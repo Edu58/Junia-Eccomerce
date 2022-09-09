@@ -1,6 +1,6 @@
 import './Shipping.scss'
 import Card from '../../components/card/Card'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import shippingImage from '../../assets/images/Delivery address-pana.png'
 import ProductsContext from '../../context/products'
@@ -16,6 +16,10 @@ const Shipping = () => {
     const [city, setCity] = useState('')
     const [address, setAddress] = useState('')
     const [postalcode, setPostalCode] = useState('')
+
+    useEffect(() => {
+        !cartState.cart.cartItems.length > 0 ? navigate('/cart') : null
+    }, [cartState.cart.cartItems, navigate])
 
     const handleSubmit = (e) => {
         e.preventDefault()
