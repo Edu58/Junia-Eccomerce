@@ -1,10 +1,13 @@
 import './PlaceOrder.scss'
+import toast, { Toaster } from 'react-hot-toast';
 import Card from "../../components/card/Card"
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import ProductsContext from "../../context/products"
 import { useNavigate, Link } from 'react-router-dom'
+import useAxiosPrivate from '../../hooks/useAxiosPrivate'
 
 const PlaceOrder = () => {
+    const [isLoading, setIsLoading] = useState(false)
 
     const { cartState } = useContext(ProductsContext)
 
@@ -12,12 +15,49 @@ const PlaceOrder = () => {
 
     const navigate = useNavigate()
 
+    const axiosPrivate = useAxiosPrivate()
+
     useEffect(() => {
         !cart.paymentMethod ? navigate('/payment-method') : null
     }, [cart.paymentMethod, navigate])
 
+    const handlePlaceOrder = async () => {
+
+        setIsLoading(true)
+
+        cart.itemsPrice = parseInt(cart.cartItems.reduce((a, c) => a + (c.price * c.quantity), 0).toFixed(2))
+        cart.shippingPrice = 500
+        cart.taxPrice = cart.itemsPrice / 10
+
+        const orderToPlace = {
+            orderItems: cart.cartItems,
+            shippingAddress: cart.shippingAddress,
+            paymentMethod: cart.paymentMethod,
+            shippingPrice: cart.shippingPrice,
+            itemsPrice: cart.itemsPrice,
+            taxPrice: cart.taxPrice,
+            totalPrice: parseInt(cart.itemsPrice + cart.shippingPrice + cart.taxPrice)
+        }
+
+        try {
+            const response = await axiosPrivate.post('/orders', {
+                ...orderToPlace,
+            })
+
+            toast.success('order placed successfully')
+            console.log(response.data)
+        } catch (error) {
+            console.log(error)
+            toast.error(`${error?.response?.data?.message}`)
+        } finally {
+            setIsLoading(false)
+        }
+
+    }
+
     return (
         <div className="place-order">
+            <Toaster />
             <Card>
                 <div className="container">
                     <h2 className='mb-3'>Place Order</h2>
@@ -43,7 +83,7 @@ const PlaceOrder = () => {
                                 <p className='fw-bold'>ITEMS &nbsp; <Link to='/cart'>Edit</Link></p>
                                 {cartState.cart.cartItems.map(item => {
                                     return (
-                                        <div className="card">
+                                        <div className="card" key={item._id}>
                                             <div className="card-body">
                                                 <div className="product d-flex flex-column py-2">
                                                     <div className="image-price">
@@ -71,7 +111,7 @@ const PlaceOrder = () => {
 
                             <h2>Order Summary</h2>
 
-                            <table class="table">
+                            <table className="table">
                                 <tbody>
                                     <tr>
                                         <td>Items</td>
@@ -88,7 +128,13 @@ const PlaceOrder = () => {
                                 </tbody>
                             </table>
 
-                            <button className="btn btn-lg w-100 text-light">Place Order</button>
+                            {
+                                isLoading
+                                    ?
+                                    <button className="btn btn-lg w-100 text-light bg-success" disabled onClick={handlePlaceOrder}>Placing order...</button>
+                                    :
+                                    <button className="btn btn-lg w-100 text-light" onClick={handlePlaceOrder}>Place Order</button>
+                            }
 
                         </div>
                     </div>

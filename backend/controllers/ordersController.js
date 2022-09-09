@@ -17,8 +17,9 @@ const createOrder = async (req, res) => {
         })
 
         const order = await newOrder.save()
-        res.status(201).json({ "message": "order created", Order })
+        res.status(201).json({ "message": "order created", order })
     } catch (error) {
+        console.log(error)
         res.status(500).json({ message: error.message })
     }
 }

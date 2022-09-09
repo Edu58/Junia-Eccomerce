@@ -44,7 +44,7 @@ const PaymentMethod = () => {
                             Paypal
                         </label>
                     </div>
-                    <div class="form-check mb-4">
+                    <div className="form-check mb-4">
                         <input className="form-check-input" type="radio" name="stripe" value="stripe" id="stripe" checked={paymentMethod === 'stripe'} onChange={handlePaymentMethodChange} />
                         <label className="form-check-label" htmlFor="stripe">
                             Stripe
