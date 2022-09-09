@@ -9,11 +9,10 @@ import ProductsContext from '../../context/products';
 
 const Login = () => {
 
-    const { authDetails, cartDispatch } = useContext(ProductsContext)
+    const { setAuthToken, cartDispatch } = useContext(ProductsContext)
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [errorMessage, setErrorMessage] = useState('')
 
     const navigate = useNavigate()
 
@@ -34,6 +33,8 @@ const Login = () => {
                     withCredentials: true
                 })
 
+            setAuthToken(response.data.accessToken)
+
             const userInfo = jwt_decode(response.data.accessToken).userInfo
 
             cartDispatch({
@@ -44,7 +45,6 @@ const Login = () => {
             navigate(from, { replace: true })
 
         } catch (error) {
-            setErrorMessage(error?.response?.data?.message)
             toast.error(`${error?.response?.data?.message}`)
         }
     }

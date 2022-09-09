@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const BASE_URL = 'http://localhost:4000'
 
-export default axios.create({
+const axiosClient = axios.create({
     baseURL: BASE_URL
 })
 
@@ -15,3 +15,5 @@ export const axiosPrivateClient = axios.create({
     },
     withCredentials: true
 })
+
+export default axiosClient

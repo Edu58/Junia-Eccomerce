@@ -10,7 +10,7 @@ export default ProductsContext
 
 
 export const ProductsProvider = ({ children }) => {
-    const [authDetails, setAuthDetails] = useState({})
+    const [authToken, setAuthToken] = useState()
     const [categories, setCategories] = useState([])
     const [allProducts, setAllProducts] = useState([])
     const [searchResults, setSearchResults] = useState([])
@@ -77,7 +77,6 @@ export const ProductsProvider = ({ children }) => {
             }
 
             case "USER_LOGIN": {
-                setAuthDetails(action.payload)
                 return { ...state, userInfo: action.payload }
             }
             default:
@@ -104,13 +103,13 @@ export const ProductsProvider = ({ children }) => {
 
 
     let values = {
-        authDetails,
+        authToken,
         categories,
         allProducts,
         cartState,
         searchResults,
         productsByCategory,
-        setAuthDetails,
+        setAuthToken,
         cartDispatch,
         searchItemInStore,
         filterByCategory,

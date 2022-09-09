@@ -32,7 +32,7 @@ const handleLogin = async (req, res) => {
         userExists.refreshToken = refreshToken
         const result = await userExists.save()
 
-        res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 })
+        res.cookie('jwt', refreshToken, { httpOnly: true, secure: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 })
         res.status(200).json({ accessToken })
     } else {
         res.status(401).json({ 'message': 'User with provided credentials does not exist' })
