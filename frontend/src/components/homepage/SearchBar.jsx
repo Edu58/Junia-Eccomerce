@@ -12,7 +12,7 @@ import { useState } from 'react';
 const SearchBar = () => {
     const [searchTerm, setSearchTerm] = useState('')
 
-    const { cartState, searchItemInStore, authToken } = useContext(ProductsContext)
+    const { cartState, searchItemInStore, authToken, cartDispatch } = useContext(ProductsContext)
     const { cart } = cartState
 
     const navigate = useNavigate()
@@ -23,6 +23,12 @@ const SearchBar = () => {
         searchItemInStore(searchTerm)
 
         navigate('/search')
+    }
+
+    const handleLogout = () => {
+        cartDispatch({
+            type: "USER_LOGOUT"
+        })
     }
 
     return (
@@ -52,7 +58,7 @@ const SearchBar = () => {
                                         <li className='mb-2'><Link to="/login">profile</Link></li>
                                         <li className='mb-2'><Link to="/login">orders</Link></li>
                                         <li className='small mb-2'>welcome, {cartState.userInfo.email}</li>
-                                        <li className='mt-4 text-danger fw-bold'>logout</li>
+                                        <li className='mt-4 text-danger fw-bold' role="button" onClick={handleLogout}>logout</li>
                                     </>
                                     :
                                     <>

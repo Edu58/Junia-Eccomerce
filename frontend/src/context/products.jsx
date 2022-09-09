@@ -79,6 +79,24 @@ export const ProductsProvider = ({ children }) => {
             case "USER_LOGIN": {
                 return { ...state, userInfo: action.payload }
             }
+
+            case "USER_LOGOUT": {
+                setAuthToken()
+
+                axiosClient.get("/auth/logout", {
+                    withCredentials: true
+                })
+
+                return {
+                    ...state,
+                    userInfo: {},
+                    cart: {
+                        cartItems: [],
+                        shippingAddress: {},
+                        paymentMethod: {}
+                    }
+                }
+            }
             default:
                 return state;
         }
