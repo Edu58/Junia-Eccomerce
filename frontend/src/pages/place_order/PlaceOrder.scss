@@ -15,6 +15,7 @@
                 display: grid;
                 grid-template-columns: 2.5fr .5fr 1fr;
                 gap: 1rem;
+                align-items: center;
               }
               .image img {
                 max-height: 4rem;

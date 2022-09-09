@@ -48,8 +48,10 @@ const PlaceOrder = () => {
                                                 <div className="product d-flex flex-column py-2">
                                                     <div className="image-price">
                                                         <div className='image d-flex'>
-                                                            <img src={item.image} alt="" className="img-fluid rounded" />
-                                                            <span className="ms-2 w-75">{item.title}</span>
+                                                            <Link to={`/product/${item.category.name}/${item._id}`} className='text-decoration-none'>
+                                                                <img src={item.image} alt="" className="img-fluid rounded" />
+                                                                <span className="ms-2 w-75">{item.title}</span>
+                                                            </Link>
                                                         </div>
                                                         <div>
                                                             <p>{item.quantity}</p>
