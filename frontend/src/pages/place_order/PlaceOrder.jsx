@@ -1,34 +1,46 @@
 import './PlaceOrder.scss'
 import Card from "../../components/card/Card"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import ProductsContext from "../../context/products"
+import { useNavigate, Link } from 'react-router-dom'
 
 const PlaceOrder = () => {
 
     const { cartState } = useContext(ProductsContext)
 
+    const { cart } = cartState
+
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        !cart.paymentMethod ? navigate('/payment-method') : null
+    }, [cart.paymentMethod, navigate])
+
     return (
         <div className="place-order">
             <Card>
                 <div className="container">
-                    <h2>Place Order</h2>
+                    <h2 className='mb-3'>Place Order</h2>
 
                     <div className="place-order-preview">
                         <div className="order-list">
 
                             <div className="shipping-info mb-5">
-                                <p className="fw-bold">Shipping</p>
-                                <p>Name: Bassir ENan</p>
-                                <p>Address: 19488, Naiobi , Kenya</p>
+                                <p className="fw-bold">SHIPPING &nbsp; <Link to='/shipping'>Edit</Link> </p>
+                                <p>Name: {cart.shippingAddress.fullname}</p>
+                                <p>Country: {cart.shippingAddress.country}</p>
+                                <p>City: {cart.shippingAddress.city}</p>
+                                <p>Address: {cart.shippingAddress.address}</p>
+                                <p>Postal code: {cart.shippingAddress.postalcode}</p>
                             </div>
 
                             <div className="payment mb-5">
-                                <p className="fw-bold">Payment</p>
-                                <p>Method: Paypal</p>
+                                <p className="fw-bold">PAYMENT &nbsp; <Link to='/payment-method'>Edit</Link></p>
+                                <p>Method: {cart.paymentMethod}</p>
                             </div>
 
                             <div className="items">
-                                <p className='fw-bold'>Items</p>
+                                <p className='fw-bold'>ITEMS &nbsp; <Link to='/cart'>Edit</Link></p>
                                 {cartState.cart.cartItems.map(item => {
                                     return (
                                         <div className="card">
@@ -61,15 +73,15 @@ const PlaceOrder = () => {
                                 <tbody>
                                     <tr>
                                         <td>Items</td>
-                                        <td className='fw-bold'>Ksh 20,000</td>
+                                        <td className='fw-bold'>Ksh {cart.cartItems.reduce((a, c) => a + (c.price * c.quantity), 0).toFixed(2)}</td>
                                     </tr>
                                     <tr>
                                         <td>Shipping</td>
-                                        <td className='fw-bold'>Ksh 5000</td>
+                                        <td className='fw-bold'>Ksh 500</td>
                                     </tr>
                                     <tr>
                                         <td>Tax</td>
-                                        <td className='fw-bold'>Ksh 345</td>
+                                        <td className='fw-bold'>Ksh 245</td>
                                     </tr>
                                 </tbody>
                             </table>

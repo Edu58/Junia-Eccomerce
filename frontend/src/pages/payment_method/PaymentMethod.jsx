@@ -8,7 +8,7 @@ const PaymentMethod = () => {
 
     const { cartState, cartDispatch } = useContext(ProductsContext)
 
-    const [paymentMethod, setPaymentMethod] = useState('paypal')
+    const [paymentMethod, setPaymentMethod] = useState(cartState.cart.paymentMethod || 'paypal')
 
     const navigate = useNavigate()
 
