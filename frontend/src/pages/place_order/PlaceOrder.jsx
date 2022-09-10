@@ -44,8 +44,7 @@ const PlaceOrder = () => {
                 ...orderToPlace,
             })
 
-            toast.success('order placed successfully')
-            console.log(response.data)
+            navigate('/order-list')
         } catch (error) {
             console.log(error)
             toast.error(`${error?.response?.data?.message}`)

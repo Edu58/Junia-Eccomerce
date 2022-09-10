@@ -14,6 +14,7 @@ import PersistLogin from './components/PersistLogin'
 import Shipping from './pages/shipping/Shipping'
 import PaymentMethod from './pages/payment_method/PaymentMethod'
 import PlaceOrder from './pages/place_order/PlaceOrder'
+import OrdersList from './pages/orders_list/OrdersList'
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
               <Route path='/shipping' element={<Shipping />}></Route>
               <Route path='/payment-method' element={<PaymentMethod />}></Route>
               <Route path='/place-order' element={<PlaceOrder />}></Route>
+              <Route path='/orders-list' element={<OrdersList />}></Route>
             </Route>
 
           </Route>
