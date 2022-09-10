@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const ROLES = require('../config/roles')
 
 const userSchema = new mongoose.Schema({
     email: {
@@ -8,7 +9,7 @@ const userSchema = new mongoose.Schema({
     roles: {
         customer: {
             type: Number,
-            default: 1667
+            default: ROLES.CUSTOMER
         },
         Admin: Number
     },

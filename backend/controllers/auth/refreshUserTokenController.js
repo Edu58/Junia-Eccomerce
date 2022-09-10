@@ -15,7 +15,7 @@ const handleRefreshToken = async (req, res) => {
     jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, decoded) => {
         if (err || foundUser.email !== decoded.email) return res.sendStatus(403)
 
-        const roles = Object.values(foundUser.roles)
+        const roles = Object.values(foundUser.roles).filter(Boolean)
 
         const accessToken = jwt.sign({
             "userInfo": {
@@ -23,7 +23,7 @@ const handleRefreshToken = async (req, res) => {
                 "email": foundUser.email,
                 "roles": roles
             }
-        }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "30s" })
+        }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "1m" })
 
         res.json({ accessToken })
     })

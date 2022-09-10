@@ -15,15 +15,15 @@ const handleLogin = async (req, res) => {
     const matchDetails = await bcrypt.compare(password, userExists.password)
 
     if (matchDetails) {
-        // const roles = Object.values(userExists.roles)
+        const roles = Object.values(userExists.roles).filter(Boolean)
 
         const accessToken = jwt.sign({
             "userInfo": {
                 "user_id": userExists._id,
                 "email": userExists.email,
-                "roles": userExists.roles
+                "roles": roles
             }
-        }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "30s" })
+        }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "1m" })
 
         const refreshToken = jwt.sign({
             "email": userExists.email
