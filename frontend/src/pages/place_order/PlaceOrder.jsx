@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from "react"
 import ProductsContext from "../../context/products"
 import { useNavigate, Link } from 'react-router-dom'
 import useAxiosPrivate from '../../hooks/useAxiosPrivate'
+import CheckoutSteps from '../../components/CheckoutSteps';
 
 const PlaceOrder = () => {
     const [isLoading, setIsLoading] = useState(false)
@@ -57,6 +58,9 @@ const PlaceOrder = () => {
     return (
         <div className="place-order">
             <Toaster />
+
+            <CheckoutSteps step1 step2 step3 />
+
             <Card>
                 <div className="container">
                     <h2 className='mb-3'>Place Order</h2>

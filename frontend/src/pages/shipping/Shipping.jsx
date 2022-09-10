@@ -4,6 +4,7 @@ import { useState, useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import shippingImage from '../../assets/images/Delivery address-pana.png'
 import ProductsContext from '../../context/products'
+import CheckoutSteps from '../../components/CheckoutSteps'
 
 const Shipping = () => {
 
@@ -44,6 +45,9 @@ const Shipping = () => {
 
     return (
         <div className='shipping'>
+
+            <CheckoutSteps step1 step2 />
+            
             <Card>
                 <h2 className='text-center mb-5'>Shipping Address</h2>
 

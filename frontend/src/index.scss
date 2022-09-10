@@ -18,3 +18,13 @@ body {
   margin: 0;
   background-color: rgb(209, 209, 209);
 }
+
+.checkout-steps > div {
+  border-bottom: 0.2rem solid gray;
+  color: gray;
+}
+
+.checkout-steps > div.active {
+  border-bottom: 0.2rem solid #f09116;
+  color: #f09116;
+}

@@ -29,7 +29,7 @@ const persistLogin = () => {
     return (
         <>
             {
-                isLoading ? <p>Loading...</p> : <Outlet />
+                isLoading ? <p className="text-center mt-5">Loading...</p> : <Outlet />
             }
         </>
     )

@@ -3,6 +3,7 @@ import Card from "../../components/card/Card"
 import { useState, useContext, useEffect } from 'react'
 import ProductsContext from '../../context/products'
 import { useNavigate } from 'react-router-dom'
+import CheckoutSteps from '../../components/CheckoutSteps'
 
 const PaymentMethod = () => {
 
@@ -34,6 +35,9 @@ const PaymentMethod = () => {
 
     return (
         <div className='payment-method'>
+
+            <CheckoutSteps step1 step2 step3 />
+
             <Card>
                 <h2 className="text-center mb-3">Payment Method</h2>
 
