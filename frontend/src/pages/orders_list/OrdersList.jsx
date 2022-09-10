@@ -84,6 +84,10 @@ const OrdersList = () => {
                                                                     <span className="fs-4">Total</span> <br />
                                                                     <span className="fs-4">KSH {order.totalPrice}</span>
                                                                 </div>
+
+                                                                <div className="cancel-order mt-4 text-center">
+                                                                    <button className="btn btn-danger">Cancel Order</button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
