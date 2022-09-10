@@ -49,6 +49,7 @@ const OrdersList = () => {
                                                     <div className="order mx-auto my-4">
                                                         <div className="card" id='order-card'>
                                                             <div className={order.isDelivered ? 'card-body bg-success text-light' : 'card-body bg-secondary text-light'}>
+                                                                <p className="text-center fw-bold fs-5">Order ID {order._id}</p>
                                                                 <div>
                                                                     <p className="fw-bold">Shipping</p>
                                                                     <p>Name: {order.shippingAddress.fullname}</p>

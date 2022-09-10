@@ -1,5 +1,15 @@
 const Order = require('../models/orderModel')
 
+const getOrders = async (req, res) => {
+    try {
+        const userOrders = await Order.find({ user: req.user_id })
+
+        res.status(200).json(userOrders)
+    } catch (error) {
+        res.status(400).json({ message: error.message })
+    }
+}
+
 const createOrder = async (req, res) => {
 
     const data = req.body
@@ -24,17 +34,25 @@ const createOrder = async (req, res) => {
     }
 }
 
-const getOrders = async (req, res) => {
-    try {
-        const userOrders = await Order.find({ user: req.user_id })
+const deleteOrder = async (req, res) => {
+    const { orderId } = req.body
 
-        res.status(200).json(userOrders)
+    try {
+        const foundOrder = await Order.findById(orderId).exec()
+
+        if (!foundOrder) res.status(404).json({ message: "Order does not exist" })
+
+        const result = await foundOrder.delete()
+
+        res.status(200).json({ message: "order deleted successfully" })
+
     } catch (error) {
-        res.status(400).json({ message: error.message })
+        res.send(400).json({ message: error.message })
     }
 }
 
 module.exports = {
     createOrder,
-    getOrders
+    getOrders,
+    deleteOrder
 }
