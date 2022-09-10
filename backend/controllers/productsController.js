@@ -4,18 +4,18 @@ const ProductCategory = require('../models/ProductCategory')
 const getProductsCategories = async (req, res) => {
     try {
         const results = await ProductCategory.find({})
-        res.send(results)
+        return res.send(results)
     } catch (error) {
-        res.send(500).json({ 'error': error.message })
+        return res.status(500).json({ 'error': error.message })
     }
 }
 
 const getAllProducts = async (req, res) => {
     try {
         const results = await Product.find({}).populate('category', 'name')
-        res.send(results)
+        return res.send(results)
     } catch (error) {
-        res.send(500).json({ 'error': error.message })
+        return res.status(500).json({ 'error': error.message })
     }
 }
 
@@ -33,9 +33,9 @@ const addProduct = async (req, res) => {
             inStock: inStock
         })
 
-        res.status(201).json({ 'message': 'product added successfully' })
+        return res.status(201).json({ 'message': 'product added successfully' })
     } catch (error) {
-        res.status(400).json({ 'error': error.message })
+        return res.status(400).json({ 'error': error.message })
     }
 }
 

@@ -9,6 +9,6 @@ router.get('/products', getAllProducts)
 router.post('/products', verifyJWT, addProduct)
 router.post('/orders', verifyJWT, createOrder)
 router.get('/orders', verifyJWT, getOrders)
-router.delete('/orders', verifyJWT, deleteOrder)
+router.delete('/orders/:orderId', verifyJWT, deleteOrder)
 
 module.exports = router

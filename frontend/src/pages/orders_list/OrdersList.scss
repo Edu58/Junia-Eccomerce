@@ -1,9 +1,14 @@
 .container {
   .orders-list {
-      .order {
-        border: 1px solid gray;
-        border-radius: 5px;
-        max-width: 45rem;
+    .order {
+      border-radius: 5px;
+      max-width: 45rem;
+      transition: .2s all;
+      
+      .card {
+        height: 48rem;
+        overflow-y: scroll;
       }
+    }
   }
 }

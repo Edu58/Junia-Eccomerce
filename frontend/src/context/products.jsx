@@ -94,6 +94,16 @@ export const ProductsProvider = ({ children }) => {
                 }
             }
 
+            case "CLEAR_CART": {
+                return {
+                    ...state,
+                    cart: {
+                        ...state.cart,
+                        cartItems: [],
+                    }
+                }
+            }
+
             case "USER_LOGIN": {
                 return {
                     ...state,

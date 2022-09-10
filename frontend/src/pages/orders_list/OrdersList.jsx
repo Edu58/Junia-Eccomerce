@@ -9,32 +9,40 @@ const OrdersList = () => {
     const [orders, setOrders] = useState([])
     const axiosPrivate = useAxiosPrivate()
 
+    useEffect(() => {
+        getOrders()
+    }, [])
+
     const getOrders = async () => {
         try {
             setIsLoading(true)
             const response = await axiosPrivate.get('/orders')
             setOrders(response.data)
-            toast.success(`Orders list received`)
         } catch (error) {
-            console.error(error.message)
             toast.error('Failed to retrieve orders list!!! Try again')
         } finally {
             setIsLoading(false)
         }
     }
 
-    useEffect(() => {
-        getOrders()
-    }, [])
+    async function handleCancelOrder(orderId) {
+        try {
+            const response = await axiosPrivate.delete(`/orders/${orderId}`)
+            toast.success(`${response.data.message}`)
+            getOrders()
+        } catch (error) {
+            toast.error('Could not cancel order!!! Try again')
+        }
+    }
 
     return (
-        <div style={{ minHeight: '60vh', backgroundColor: '#FFFF' }}>
+        <div style={{ minHeight: '60vh'}} className="bg-light">
             {
                 isLoading
-                ?
-                <p className="text-center fs-4 pt-3">Getting your orders...</p>
-                :
-                <>
+                    ?
+                    <p className="text-center fs-4 pt-3">Getting your orders...</p>
+                    :
+                    <>
                         <Toaster />
                         <p className="fs-4 text-center py-2">Your Orders [{orders.length}]</p>
 
@@ -42,13 +50,13 @@ const OrdersList = () => {
                             {
                                 orders.length > 0
                                     ?
-                                    <div className="orders-list">
+                                    <div className="orders-list row">
                                         {
                                             orders.map(order => {
                                                 return (
-                                                    <div className="order mx-auto my-4">
-                                                        <div className="card" id='order-card'>
-                                                            <div className={order.isDelivered ? 'card-body bg-success text-light' : 'card-body bg-secondary text-light'}>
+                                                    <div className="order mx-auto my-4 col-md-6">
+                                                        <div className="card border" id='order-card'>
+                                                            <div className='card-body'>
                                                                 <p className="text-center fw-bold fs-5">Order ID {order._id}</p>
                                                                 <div>
                                                                     <p className="fw-bold">Shipping</p>
@@ -69,14 +77,14 @@ const OrdersList = () => {
                                                                 </div>
                                                                 <div>
                                                                     <p className="fw-bold">Items</p>
-                                                                    <div className="d-flex justify-content-between align-items-center">
+                                                                    <div>
                                                                         {order.orderItems.map(item => {
                                                                             return (
-                                                                                <>
+                                                                                <div className="d-flex justify-content-between align-items-center">
                                                                                     <p className='w-50'>{item.title}</p>
                                                                                     <p>{item.quantity}</p>
                                                                                     <p>Ksh {item.price}</p>
-                                                                                </>
+                                                                                </div>
                                                                             )
                                                                         })}
                                                                     </div>
@@ -86,9 +94,15 @@ const OrdersList = () => {
                                                                     <span className="fs-4">KSH {order.totalPrice}</span>
                                                                 </div>
 
-                                                                <div className="cancel-order mt-4 text-center">
-                                                                    <button className="btn btn-danger">Cancel Order</button>
-                                                                </div>
+                                                                {
+                                                                    order.isPaid
+                                                                        ?
+                                                                        ''
+                                                                        :
+                                                                        <div className="cancel-order mt-4 text-center">
+                                                                            <button className="btn btn-outline-danger" onClick={() => handleCancelOrder(order._id)}>Cancel Order</button>
+                                                                        </div>
+                                                                }
                                                             </div>
                                                         </div>
                                                     </div>
@@ -100,7 +114,7 @@ const OrdersList = () => {
                                     <p className='text-center py-3'>You have no orders <Link to="/">Go shopping</Link></p>
                             }
                         </div>
-                </>
+                    </>
             }
         </div >
     )

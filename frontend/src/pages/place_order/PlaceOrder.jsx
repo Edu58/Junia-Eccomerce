@@ -12,7 +12,7 @@ const PlaceOrder = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [orderPlaced, setOrderPlaced] = useState(false)
 
-    const { cartState } = useContext(ProductsContext)
+    const { cartState, cartDispatch } = useContext(ProductsContext)
 
     const { cart } = cartState
 
@@ -20,9 +20,6 @@ const PlaceOrder = () => {
 
     const axiosPrivate = useAxiosPrivate()
 
-    useEffect(() => {
-        !cart.paymentMethod ? navigate('/payment-method') : null
-    }, [cart.paymentMethod, navigate])
 
     const handlePlaceOrder = async () => {
 
@@ -49,6 +46,7 @@ const PlaceOrder = () => {
 
             setOrderPlaced(true)
             toast.success('Order placed successfully')
+            cartDispatch({ type: "CLEAR_CART" })
         } catch (error) {
             console.log(error)
             toast.error('Order failed!!! Try again')
