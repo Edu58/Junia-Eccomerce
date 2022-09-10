@@ -16,8 +16,8 @@ const createOrder = async (req, res) => {
             user: req.user_id
         })
 
-        const order = await newOrder.save()
-        res.status(201).json({ "message": "order created", order })
+        // const order = await newOrder.save()
+        res.status(201).json({ "message": "order created" })
     } catch (error) {
         console.log(error)
         res.status(400).json({ message: error.message })
