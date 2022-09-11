@@ -9,7 +9,7 @@ const handleUserRegistration = async (req, res) => {
 
     const duplicate = await User.findOne({ email: email }).exec()
 
-    if (duplicate) return res.status(400).json({ 'message': 'user already exists' })
+    if (duplicate) return res.status(409).json({ 'message': 'user already exists' })
 
     try {
         const hashedPassword = await bcrypt.hash(password, 10)
