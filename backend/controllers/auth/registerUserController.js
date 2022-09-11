@@ -1,4 +1,3 @@
-const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const User = require('../../models/User')
 
@@ -9,7 +8,7 @@ const handleUserRegistration = async (req, res) => {
 
     const duplicate = await User.findOne({ email: email }).exec()
 
-    if (duplicate) return res.status(409).json({ 'message': 'user already exists' })
+    if (duplicate) return res.status(409).json({ 'message': 'Email already in use' })
 
     try {
         const hashedPassword = await bcrypt.hash(password, 10)

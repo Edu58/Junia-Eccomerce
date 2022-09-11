@@ -1,24 +1,49 @@
 import './Signup.scss'
 import signupImage from '../../assets/images/signup-card-image.jpg'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import axiosClient from '../../components/Axios'
+import toast, { Toaster } from 'react-hot-toast';
 
 const Signup = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [passwordsMatch, setpasswordsMatch] = useState(false)
 
+    const navigate = useNavigate()
+
     const checkConfirmPasswordMatch = (e) => {
         const confirmPassword = e.target.value
         setpasswordsMatch(password ? password === confirmPassword : false)
     }
 
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        if (!email || !password) toast.error('email and password are required')
+
+        try {
+            const response = await axiosClient.post('auth/register', {
+                email, password
+            })
+
+            setEmail('')
+            setPassword('')
+
+            navigate("/login")
+        } catch (error) {
+            toast.error(`${error?.response?.data?.message}`)
+        }
+
+    }
+
     return (
         <div className="container signup-card">
+            <Toaster />
             <div className="card mx-auto">
                 <div className="fw-bold fs-4 card-header text-center text-light">Register</div>
                 <div className="card-body">
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div className="contents">
 
                             <div className="signup-card-image">
@@ -31,7 +56,7 @@ const Signup = () => {
                                     <input type="email" name="email" id="email" className="form-control shadow-none" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} required />
                                 </div>
                                 <div className="mb-3">
-                                    <label htmlFor="password" className='form-label'>Create a strong password</label>
+                                    <label htmlFor="password" className='form-label'>Create password - <span className="small fst-italic">8 chars minimum</span> </label>
                                     <input type="password" name="password" id="password" className="form-control shadow-none" placeholder="Enter password" onChange={(e) => setPassword(e.target.value)} required />
                                 </div>
 
