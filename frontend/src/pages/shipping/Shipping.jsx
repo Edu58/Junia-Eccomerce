@@ -1,10 +1,11 @@
 import './Shipping.scss'
 import Card from '../../components/card/Card'
 import { useState, useContext, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import shippingImage from '../../assets/images/Delivery address-pana.png'
 import ProductsContext from '../../context/products'
 import CheckoutSteps from '../../components/CheckoutSteps'
+import toast, { Toaster } from 'react-hot-toast';
 
 const Shipping = () => {
 
@@ -14,6 +15,8 @@ const Shipping = () => {
 
     const navigate = useNavigate()
 
+    const location = useLocation()
+
     const [fullname, setFullName] = useState(cart.shippingAddress.fullname || '')
     const [country, setCountry] = useState(cart.shippingAddress.country || '')
     const [city, setCity] = useState(cart.shippingAddress.city || '')
@@ -21,8 +24,11 @@ const Shipping = () => {
     const [postalcode, setPostalCode] = useState(cart.shippingAddress.postalcode || '')
 
     useEffect(() => {
+
+        location.state?.message ? toast.success(location.state.message) : null
+
         !cart.cartItems.length > 0 ? navigate('/cart') : null
-    }, [cart.cartItems, navigate])
+    }, [cart.cartItems, navigate, location])
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -45,9 +51,10 @@ const Shipping = () => {
 
     return (
         <div className='shipping'>
+            <Toaster />
 
             <CheckoutSteps step1 step2 />
-            
+
             <Card>
                 <h2 className='text-center mb-5'>Shipping Address</h2>
 

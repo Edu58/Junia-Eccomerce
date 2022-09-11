@@ -6,9 +6,13 @@ import { useContext } from 'react'
 import ProductsContext from '../../context/products'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import toast, { Toaster } from 'react-hot-toast';
+import { useLocation } from 'react-router-dom'
 
 const Homepage = () => {
     const { allProducts, categories, errors } = useContext(ProductsContext)
+
+    const location = useLocation()
 
     const [jewelery, setJewelery] = useState([])
     const [electronics, setElectronics] = useState([])
@@ -16,6 +20,9 @@ const Homepage = () => {
     const [womensClothing, setWomensClothing] = useState([])
 
     useEffect(() => {
+
+        location.state?.message ? toast.success(location.state.message) : null
+
         allProducts.map((item) => {
             if (item.category.name == 'electronics') {
                 setElectronics(current => [...current, item])
@@ -27,10 +34,11 @@ const Homepage = () => {
                 setWomensClothing(current => [...current, item])
             }
         })
-    }, [allProducts])
+    }, [allProducts, location])
 
     return (
         <>
+            <Toaster />
             {
                 errors
                     ?

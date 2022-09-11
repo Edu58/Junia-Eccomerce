@@ -3,7 +3,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import jwt_decode from "jwt-decode";
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import loginImage from '../../assets/images/login-card-image.jpg'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import axiosClient from '../../components/Axios'
 import ProductsContext from '../../context/products';
 
@@ -19,6 +19,10 @@ const Login = () => {
     const location = useLocation()
 
     const from = location.state?.from?.pathname || "/"
+
+    useEffect(() => {
+        location.state?.message ? toast.success(location.state.message) : null
+    }, [location])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -44,7 +48,7 @@ const Login = () => {
 
             localStorage.setItem('status', '1')
 
-            navigate(from, { replace: true })
+            navigate(from, { replace: true, state: { message: "Logged in successfully" } })
 
         } catch (error) {
             toast.error(`${error?.response?.data?.message}`)

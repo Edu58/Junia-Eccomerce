@@ -30,7 +30,7 @@ const Signup = () => {
             setEmail('')
             setPassword('')
 
-            navigate("/login")
+            navigate("/login", { state: { message: "Account created sucecssfully" } })
         } catch (error) {
             toast.error(`${error?.response?.data?.message}`)
         }
