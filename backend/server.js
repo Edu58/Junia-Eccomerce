@@ -23,8 +23,11 @@ app.use(express.urlencoded({ extended: false })) // get access to body of reques
 app.use(express.json()) // get json in request
 app.use(cookieParser()) //get access to cookies
 
+app.use(express.static('public'))
+
 // routes
 app.use('/', require('./routes/store'))
+app.use('/mail', require('./routes/mail'))
 app.use('/auth', require('./routes/authentication'))
 
 // start server
