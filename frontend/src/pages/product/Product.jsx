@@ -65,7 +65,9 @@ const Product = () => {
 								<p className="small">+ shipping from KSH 92 to CBD</p>
 
 								<div className="add-to-cart-btn">
-									<button className="btn w-100 text-light" onClick={addToCartHandler}>ADD TO CART</button>
+									<button className="btn w-100 text-light" onClick={addToCartHandler}>
+										ADD TO CART
+									</button>
 								</div>
 
 								<div className="promotions mt-4">

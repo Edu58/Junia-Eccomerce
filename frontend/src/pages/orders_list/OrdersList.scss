@@ -2,13 +2,8 @@
   .orders-list {
     .order {
       border-radius: 5px;
-      max-width: 45rem;
+      max-width: 35rem;
       transition: .2s all;
-      
-      .card {
-        height: 48rem;
-        overflow-y: scroll;
-      }
     }
   }
 }

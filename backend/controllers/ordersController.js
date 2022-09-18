@@ -1,5 +1,26 @@
 const Order = require('../models/orderModel')
 
+const payOrderWithPaypal = async (req, res) => {
+    const order = await Order.findById(req.params.orderId);
+
+    if (order) {
+        order.isPaid = true
+        order.paidAt = Date.now()
+        order.paymentResult = {
+            id: req.body.id,
+            status: req.body.status,
+            update_time: req.body.update_time,
+            email: req.body.payer.email_address
+        }
+
+        const updatedOrder = await order.save()
+
+        res.send({ message: 'Order paid', order: updatedOrder })
+    } else {
+        res.status(404).json({ message: 'Order NOT found' })
+    }
+}
+
 const getOrders = async (req, res) => {
     try {
         const userOrders = await Order.find({ user: req.user_id })
@@ -48,6 +69,7 @@ const deleteOrder = async (req, res) => {
 }
 
 module.exports = {
+    payOrderWithPaypal,
     createOrder,
     getOrders,
     deleteOrder
