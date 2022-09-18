@@ -17,9 +17,9 @@ const handleUserRegistration = async (req, res) => {
             "password": hashedPassword
         })
 
-        res.status(201).json({ 'message': 'user created successfully' })
+        return res.status(201).json({ 'message': 'user created successfully' })
     } catch (error) {
-        res.status(400).json({ 'error': error.message })
+        return res.status(400).json({ 'error': error.message })
     }
 }
 

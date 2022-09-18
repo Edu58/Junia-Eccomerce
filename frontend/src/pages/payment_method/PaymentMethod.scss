@@ -8,6 +8,17 @@
         margin: auto;
         max-width: 10rem;
 
+        #paypal-svg {
+          height: 2rem;
+        }
+        #stripe-svg {
+          max-height: 2rem;
+        }
+
+        #mpesa-svg {
+          height: 5rem;
+        }
+
         button {
             background-color: #f09116;
         }

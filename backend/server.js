@@ -1,17 +1,20 @@
 require('dotenv').config()
-const express = require('express')
 const mongoose = require('mongoose')
-const connectDB = require('./config/dbConnection')
+const express = require('express')
+const { connectDevDB, connectTestDB } = require('./config/dbConnection')
 const allowCredentials = require('./middleware/allowCredentials')
 const cors = require('cors')
 const corsConfig = require('./config/corsConfig')
 const cookieParser = require('cookie-parser')
 
 // connect to db before anything else
-connectDB()
+// process.env.NODE_ENV = 'test' ? connectTestDB() : 
+connectDevDB()
 
 const app = express()
+
 const PORT = 4000
+
 
 // fix 'Access-Control-Allow-Credentials' error
 app.use(allowCredentials)
@@ -27,6 +30,7 @@ app.use(express.static('public'))
 
 // routes
 app.use('/', require('./routes/store'))
+app.use('/payments', require('./routes/payments'))
 app.use('/mail', require('./routes/mail'))
 app.use('/auth', require('./routes/authentication'))
 
@@ -38,3 +42,6 @@ mongoose.connection.once('connected', () => {
         console.log(`Server is listening on port ${PORT}`)
     })
 })
+
+
+module.exports = app
