@@ -4,7 +4,6 @@ import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
 import toast, { Toaster } from 'react-hot-toast';
 import useAxiosPrivate from "../../hooks/useAxiosPrivate"
 import { Link } from 'react-router-dom';
-import { axiosPrivateClient } from '../../components/Axios';
 import { ListGroup } from 'react-bootstrap';
 
 const OrdersList = () => {
@@ -32,7 +31,7 @@ const OrdersList = () => {
     }
 
     const loadPaypalScript = async () => {
-        const { data } = await axiosPrivateClient.get('/payments/paypal/clientId')
+        const { data } = await axiosPrivate.get('/payments/paypal/clientId')
 
         paypalDispatch({
             type: 'resetOptions',

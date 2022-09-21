@@ -1,13 +1,16 @@
-import { Link } from 'react-router-dom'
 import './AdminDashboard.scss'
+import { Link } from 'react-router-dom'
 import { GiHamburgerMenu } from 'react-icons/gi'
-import { useState } from 'react'
-import { useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import ProductsContext from '../../context/products'
+import useAxiosPrivate from '../../hooks/useAxiosPrivate'
 
 const AdminDashboard = () => {
     const { cartDispatch } = useContext(ProductsContext)
     const [sidebar, setSidebar] = useState(false)
+    const [totals, setTotals] = useState({ users: 0, categories: 0, orders: 0, products: 0 })
+
+    const axiosPrivate = useAxiosPrivate()
 
     const showMenu = () => {
         const sidebar = document.getElementById("sidebar")
@@ -18,6 +21,16 @@ const AdminDashboard = () => {
             type: "USER_LOGOUT"
         })
     }
+
+    const getTotals = async () => {
+        const {data} = await axiosPrivate.get('/admin/totals')
+        setTotals({ ...data })
+    }
+
+    useEffect(() => {
+
+        getTotals()
+    }, [totals])
 
     return (
         <div>
@@ -40,9 +53,11 @@ const AdminDashboard = () => {
 
             <section className="dashboard">
                 <div className={`sidebar text-light pt-2 bg-dark ${sidebar ? 'show' : ''}`} id="sidebar">
-                    <div className="mb-3">
+                    <div className="my-2">
                         <i className='bx bx-home-alt-2 fs-4'></i>
-                        <span className="fw-bold">Home</span>
+                        <Link to="/" className='text-decoration-none'>
+                            <span className="fw-bold">Home</span>
+                        </Link>
                     </div>
                     <div className="mb-3">
                         <i className='bx bx-user'></i>
@@ -72,7 +87,7 @@ const AdminDashboard = () => {
                                 </p>
                                 <div>
                                     <span>Total Users</span>
-                                    <p className="number">15,000</p>
+                                    <p className="number">{totals.users}</p>
                                 </div>
                             </div>
                         </div>
@@ -83,7 +98,7 @@ const AdminDashboard = () => {
                                 </p>
                                 <div>
                                     <span>Total Categories</span>
-                                    <p className="number">2,000</p>
+                                    <p className="number">{totals.categories}</p>
                                 </div>
                             </div>
                         </div>
@@ -94,7 +109,7 @@ const AdminDashboard = () => {
                                 </p>
                                 <div>
                                     <span>Total Products</span>
-                                    <p className="number">1,000</p>
+                                    <p className="number">{totals.products}</p>
                                 </div>
                             </div>
                         </div>
@@ -105,7 +120,7 @@ const AdminDashboard = () => {
                                 </p>
                                 <div>
                                     <span>Total Orders</span>
-                                    <p className="number">5,000</p>
+                                    <p className="number">{totals.orders}</p>
                                 </div>
                             </div>
                         </div>
@@ -117,7 +132,6 @@ const AdminDashboard = () => {
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Role</th>
-                                <th scope="col">orders</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -125,31 +139,26 @@ const AdminDashboard = () => {
                                 <th scope="row">1</th>
                                 <td>Jane Doe</td>
                                 <td>Customer</td>
-                                <td>2</td>
                             </tr>
                             <tr>
                                 <th scope="row">1</th>
                                 <td>Jane Doe</td>
                                 <td>Customer</td>
-                                <td>2</td>
                             </tr>
                             <tr>
                                 <th scope="row">1</th>
                                 <td>Jane Doe</td>
                                 <td>Customer</td>
-                                <td>2</td>
                             </tr>
                             <tr>
                                 <th scope="row">1</th>
                                 <td>Jane Doe</td>
                                 <td>Customer</td>
-                                <td>2</td>
                             </tr>
                             <tr>
                                 <th scope="row">1</th>
                                 <td>Jane Doe</td>
                                 <td>Customer</td>
-                                <td>2</td>
                             </tr>
                         </tbody>
                     </table>

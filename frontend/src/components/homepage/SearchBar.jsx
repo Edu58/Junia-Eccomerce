@@ -56,6 +56,7 @@ const SearchBar = () => {
                                     ?
                                     <>
                                         <li className='mb-2'><Link to="/login">profile</Link></li>
+                                        <li className='mb-2'><Link to="/admin">dashboard</Link></li>
                                         <li className='mb-2'><Link to="/orders-list">orders</Link></li>
                                         <li className='small mb-2'>welcome, {cartState.userInfo.email}</li>
                                         <li className='mt-4 text-danger fw-bold' role="button" onClick={handleLogout}>logout</li>

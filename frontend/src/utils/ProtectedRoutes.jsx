@@ -14,11 +14,11 @@ const ProtectedRoutes = () => {
 }
 
 export const IsAdmin = () => {
-    const { authToken, cartState } = useContext(ProductsContext)
+    const { cartState } = useContext(ProductsContext)
     const location = useLocation()
 
     return (
-        authToken && cartState.userInfo.roles.find((role) => role === 1555) ? <Outlet /> : <Navigate to='/' state={{ from: location }} replace />
+        cartState.userInfo.roles.find((role) => role === 1555) ? <Outlet /> : <Navigate to='/' state={{ from: location }} replace />
     )
 }
 
