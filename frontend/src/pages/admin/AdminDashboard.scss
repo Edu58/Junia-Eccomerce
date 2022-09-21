@@ -1,37 +1,18 @@
 .navbar {
-  background-color: #f09116;
+    background-color: #f09116;
 }
 
 a {
     text-decoration: none;
 }
 
-section.hero {
-    min-height: 100vh;
-    background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
-        url('./assets/worker.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
 #hamburger {
     display: none;
 }
 
-nav {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(3.5px);
-    -webkit-backdrop-filter: blur(3.5px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-}
-
-nav .logo img {
-    max-width: 6rem;
-}
-
 nav .nav-links ul {
     list-style: none;
+    margin: 0;
 }
 
 nav .nav-links ul li:not(:last-child) {
@@ -149,8 +130,8 @@ section .data .cards .card .number {
 }
 
 @media screen and (max-width: 425px) {
-section .data .cards {
-    display: grid;
-    grid-template-columns: 1fr;
-}
+    section .data .cards {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
 }

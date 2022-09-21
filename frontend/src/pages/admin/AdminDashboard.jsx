@@ -4,10 +4,15 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import { useState, useContext, useEffect } from 'react'
 import ProductsContext from '../../context/products'
 import useAxiosPrivate from '../../hooks/useAxiosPrivate'
+import UsersTable from './UsersTable'
+import CategoriesTable from './CategoriesTable'
+import ProductsTable from './ProductsTable'
+import OrdersTable from './OrdersTable'
 
 const AdminDashboard = () => {
     const { cartDispatch } = useContext(ProductsContext)
     const [sidebar, setSidebar] = useState(false)
+    const [tab, setTab] = useState(1)
     const [totals, setTotals] = useState({ users: 0, categories: 0, orders: 0, products: 0 })
 
     const axiosPrivate = useAxiosPrivate()
@@ -23,30 +28,33 @@ const AdminDashboard = () => {
     }
 
     const getTotals = async () => {
-        const {data} = await axiosPrivate.get('/admin/totals')
+        const { data } = await axiosPrivate.get('/admin/totals')
         setTotals({ ...data })
     }
 
     useEffect(() => {
-
         getTotals()
-    }, [totals])
+    }, [])
 
     return (
-        <div>
-            <nav className="navbar py-2">
-                <div className="container-fluid d-flex justify-content-between align-items-center">
-                    <div className="logo d-flex align-items-center">
-                        <p>
+        <div className='container-fluid p-0'>
+            <nav className="navbar">
+                <div className="container-fluid">
+                    <div className="d-flex align-items-center">
+                        <div>
                             <GiHamburgerMenu id='hamburger' onClick={() => setSidebar(!sidebar)} size={20} color={'white'} />
-                        </p>
-                        <p className='brand fw-bold fs-4 text-light'>Admin</p>
+                        </div>
+                        <div>
+                            <span className='fw-bold fs-4 text-light'>Admin</span>
+                        </div>
                     </div>
 
-                    <div className="nav-links d-flex">
-                        <ul className="d-flex">
-                            <li className=' btn btn-sm btn-outline-danger' onClick={handleLogout}>Log out</li>
-                        </ul>
+                    <div className="nav-links">
+                        <div>
+                            <ul className="d-flex">
+                                <li className=' btn btn-sm btn-outline-danger' onClick={handleLogout}>Log out</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </nav>
@@ -59,28 +67,28 @@ const AdminDashboard = () => {
                             <span className="fw-bold">Home</span>
                         </Link>
                     </div>
-                    <div className="mb-3">
+                    <div className="mb-3" role="button" onClick={() => setTab(1)}>
                         <i className='bx bx-user'></i>
                         <span>Users</span>
                     </div>
-                    <div className="mb-3">
+                    <div className="mb-3" role="button" onClick={() => setTab(2)}>
                         <i className='bx bxs-grid'></i>
                         <span>Categories</span>
                     </div>
-                    <div className="mb-3">
+                    <div className="mb-3" role="button" onClick={() => setTab(3)}>
                         <i className='bx bx-briefcase-alt'></i>
                         <span>Products</span>
                     </div>
-                    <div className="mb-3">
+                    <div className="mb-3" role="button" onClick={() => setTab(4)}>
                         <i className='bx bx-envelope'></i>
                         <span>Orders</span>
                     </div>
                 </div>
                 <div className="data pt-2">
-                    <p className="fs-4">Dashboard</p>
+                    <p className="fs-4 container-fluid">Dashboard</p>
 
-                    <div className="cards">
-                        <div className="card">
+                    <div className="cards container-fluid">
+                        <div className="card shadow" onClick={() => setTab(1)} role="button">
                             <div className="card-body d-flex align-items-center">
                                 <p>
                                     <i className='bx bx-user'></i>
@@ -91,7 +99,7 @@ const AdminDashboard = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="card">
+                        <div className="card shadow" onClick={() => setTab(2)} role="button">
                             <div className="card-body d-flex align-items-center">
                                 <p>
                                     <i className='bx bx-user'></i>
@@ -102,7 +110,7 @@ const AdminDashboard = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="card">
+                        <div className="card shadow" onClick={() => setTab(3)} role="button">
                             <div className="card-body d-flex align-items-center">
                                 <p>
                                     <i className='bx bx-edit-alt'></i>
@@ -113,7 +121,7 @@ const AdminDashboard = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="card">
+                        <div className="card shadow" onClick={() => setTab(4)} role="button">
                             <div className="card-body d-flex align-items-center">
                                 <p>
                                     <i className='bx bx-briefcase-alt'></i>
@@ -126,42 +134,11 @@ const AdminDashboard = () => {
                         </div>
                     </div>
 
-                    <table className="table mt-4">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Role</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Jane Doe</td>
-                                <td>Customer</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Jane Doe</td>
-                                <td>Customer</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Jane Doe</td>
-                                <td>Customer</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Jane Doe</td>
-                                <td>Customer</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Jane Doe</td>
-                                <td>Customer</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div className="container-fluid">
+                        {
+                            tab === 1 ? <UsersTable /> : tab === 2 ? <CategoriesTable /> : tab === 3 ? <ProductsTable /> : tab === 4 ? <OrdersTable /> : ''
+                        }
+                    </div>
 
                     <div className="pagination d-flex mt-5">
                         <a href="#">&laquo;</a>
