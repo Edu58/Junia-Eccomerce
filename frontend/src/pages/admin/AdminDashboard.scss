@@ -1,0 +1,156 @@
+.navbar {
+  background-color: #f09116;
+}
+
+a {
+    text-decoration: none;
+}
+
+section.hero {
+    min-height: 100vh;
+    background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
+        url('./assets/worker.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#hamburger {
+    display: none;
+}
+
+nav {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(3.5px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+nav .logo img {
+    max-width: 6rem;
+}
+
+nav .nav-links ul {
+    list-style: none;
+}
+
+nav .nav-links ul li:not(:last-child) {
+    margin-right: 2rem;
+}
+
+nav .nav-links ul li a {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+section.dashboard {
+    display: grid;
+    grid-template-columns: .7fr 3.3fr;
+    gap: 2rem;
+    min-height: 100vh;
+}
+
+section .sidebar .mb-3 {
+    display: flex;
+    align-items: center;
+}
+
+section .sidebar i {
+    font-size: 1.5rem;
+    margin: .5rem 1rem;
+}
+
+section .data .cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    color: #FFF;
+}
+
+section .data .cards .card {
+    border: none;
+}
+
+section .data .cards .card:nth-child(1) {
+    background-color: #e91d62;
+}
+
+section .data .cards .card:nth-child(2) {
+    background-color: #2196f3;
+}
+
+section .data .cards .card:nth-child(3) {
+    background-color: #9a34a9;
+}
+
+section .data .cards .card:nth-child(4) {
+    background-color: #8ac14b;
+}
+
+section .data .cards .card i {
+    font-size: 2.5rem;
+    margin-right: 1rem;
+}
+
+section .data .cards .card .number {
+    font-size: 1.5rem;
+}
+
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination a.active {
+    background-color: #152238;
+    color: white;
+    border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 5px;
+}
+
+
+/* media queries*/
+@media screen and (max-width: 768px) {
+
+    #hamburger {
+        display: block;
+        margin-right: 1rem;
+        cursor: pointer;
+    }
+
+    section.dashboard {
+        display: block;
+        padding: 0 1rem;
+    }
+
+    section .sidebar {
+        display: none;
+    }
+
+    section .sidebar.show {
+        display: block;
+        padding-bottom: 1rem;
+    }
+
+    section .data .cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 425px) {
+section .data .cards {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+}

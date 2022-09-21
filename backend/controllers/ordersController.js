@@ -15,7 +15,8 @@ const payOrderWithPaypal = async (req, res) => {
 
         const updatedOrder = await order.save()
 
-        res.send({ message: 'Order paid', order: updatedOrder })
+        res.send({ message: 'Order paid', order: updatedOrder
+     })
     } else {
         res.status(404).json({ message: 'Order NOT found' })
     }

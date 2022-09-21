@@ -1,7 +1,4 @@
-import { createContext } from "react";
-import { useReducer } from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import { createContext, useReducer, useEffect, useState } from "react";
 import axiosClient from '../components/Axios'
 
 const ProductsContext = createContext()

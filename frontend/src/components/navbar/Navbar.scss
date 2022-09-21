@@ -1,18 +1,13 @@
-.navbar {
-  background-color: #f09116;
+// .navbar {
+//   background-color: #f09116;
 
-  .container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-  }
+//   .call {
+//     background-color: rgb(236, 77, 38);
+//   }
+// }
 
-  .call {
-    background-color: rgb(236, 77, 38);
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .navbar {
-    display: none !important;
-  }
-}
+// @media screen and (max-width: 768px) {
+//   .navbar {
+//     display: none !important;
+//   }
+// }

@@ -10,11 +10,13 @@ import WithoutNav from './utils/WithoutNav'
 import WithNav from './utils/withNav'
 import Signup from './pages/signup/Signup'
 import ProtectedRoutes from './utils/ProtectedRoutes'
+import { IsAdmin } from './utils/ProtectedRoutes'
 import PersistLogin from './components/PersistLogin'
 import Shipping from './pages/shipping/Shipping'
 import PaymentMethod from './pages/payment_method/PaymentMethod'
 import PlaceOrder from './pages/place_order/PlaceOrder'
 import OrdersList from './pages/orders_list/OrdersList'
+import AdminDashboard from './pages/admin/AdminDashboard'
 
 function App() {
 
@@ -25,6 +27,12 @@ function App() {
         <Route element={<WithoutNav />}>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/signup' element={<Signup />}></Route>
+
+          <Route element={<ProtectedRoutes />}>
+            <Route element={<IsAdmin />}>
+              <Route path='/admin' element={<AdminDashboard />}></Route>
+            </Route>
+          </Route>
         </Route>
 
         <Route element={<PersistLogin />}>
