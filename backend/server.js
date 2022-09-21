@@ -33,6 +33,7 @@ app.use('/', require('./routes/store'))
 app.use('/payments', require('./routes/payments'))
 app.use('/mail', require('./routes/mail'))
 app.use('/auth', require('./routes/authentication'))
+app.use('/admin', require('./routes/admin'))
 
 // start server
 mongoose.connection.once('connected', () => {
