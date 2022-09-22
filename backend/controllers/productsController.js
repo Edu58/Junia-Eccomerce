@@ -20,17 +20,16 @@ const getAllProducts = async (req, res) => {
 }
 
 const addProduct = async (req, res) => {
-    const { title, price, description, category, image, rating, inStock } = req.body
+    const { title, price, description, category, image, inStock } = req.body
 
     try {
         const newProduct = await Product.create({
-            title: title,
-            price: price,
-            description: description,
-            category: category,
-            image: image,
-            rating: rating,
-            inStock: inStock
+            title,
+            price,
+            description,
+            category,
+            image,
+            inStock
         })
 
         return res.status(201).json({ 'message': 'product added successfully' })

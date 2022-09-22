@@ -17,6 +17,7 @@ import PaymentMethod from './pages/payment_method/PaymentMethod'
 import PlaceOrder from './pages/place_order/PlaceOrder'
 import OrdersList from './pages/orders_list/OrdersList'
 import AdminDashboard from './pages/admin/AdminDashboard'
+import AddProduct from './pages/admin/AddProduct'
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
           <Route element={<ProtectedRoutes />}>
             <Route element={<IsAdmin />}>
               <Route path='/admin' element={<AdminDashboard />}></Route>
+              <Route path='/add-product' element={<AddProduct />}></Route>
             </Route>
           </Route>
         </Route>

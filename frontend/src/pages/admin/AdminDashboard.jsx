@@ -8,6 +8,11 @@ import UsersTable from './UsersTable'
 import CategoriesTable from './CategoriesTable'
 import ProductsTable from './ProductsTable'
 import OrdersTable from './OrdersTable'
+import { BiPlusCircle, BiCategory } from 'react-icons/bi'
+import { AiOutlineHome } from 'react-icons/ai'
+import { FiUsers } from 'react-icons/fi'
+import { GiClothes } from 'react-icons/gi'
+import { HiOutlineShoppingCart } from 'react-icons/hi'
 
 const AdminDashboard = () => {
     const { cartDispatch } = useContext(ProductsContext)
@@ -17,10 +22,7 @@ const AdminDashboard = () => {
 
     const axiosPrivate = useAxiosPrivate()
 
-    const showMenu = () => {
-        const sidebar = document.getElementById("sidebar")
-        sidebar.classList.toggle('show')
-    }
+
     const handleLogout = () => {
         cartDispatch({
             type: "USER_LOGOUT"
@@ -45,42 +47,52 @@ const AdminDashboard = () => {
                             <GiHamburgerMenu id='hamburger' onClick={() => setSidebar(!sidebar)} size={20} color={'white'} />
                         </div>
                         <div>
-                            <span className='fw-bold fs-4 text-light'>Admin</span>
+                            <Link to='/admin' className='text-decoration-none'>
+                                <span className='fw-bold fs-4 text-light'>Admin</span>
+                            </Link>
                         </div>
                     </div>
 
-                    <div className="nav-links">
-                        <div>
-                            <ul className="d-flex">
-                                <li className=' btn btn-sm btn-outline-danger' onClick={handleLogout}>Log out</li>
-                            </ul>
-                        </div>
+                    <div className="nav-links d-flex align-items-center">
+                        <ul className="d-flex align-items-center">
+                            <Link to="/add-product" className='text-decoration-none'>
+                                <li className=' btn btn-sm btn-success d-flex align-items-center'>
+                                    <BiPlusCircle size={18} />
+                                    Product
+                                </li>
+                            </Link>
+                        </ul>
+
+                        <ul className="d-flex">
+                            <li className=' btn btn-sm btn-outline-danger' onClick={handleLogout}>Log out</li>
+                        </ul>
+
                     </div>
                 </div>
             </nav>
 
             <section className="dashboard">
-                <div className={`sidebar text-light pt-2 bg-dark ${sidebar ? 'show' : ''}`} id="sidebar">
-                    <div className="my-2">
-                        <i className='bx bx-home-alt-2 fs-4'></i>
+                <div className={`sidebar text-light pt-2 ps-2 bg-dark ${sidebar ? 'show' : ''}`} id="sidebar">
+                    <div className="my-3">
+                        <AiOutlineHome size={25} className="me-2" />
                         <Link to="/" className='text-decoration-none'>
                             <span className="fw-bold">Home</span>
                         </Link>
                     </div>
-                    <div className="mb-3" role="button" onClick={() => setTab(1)}>
-                        <i className='bx bx-user'></i>
+                    <div className="mb-4" role="button" onClick={() => setTab(1)}>
+                        <FiUsers size={25} className="me-2" />
                         <span>Users</span>
                     </div>
-                    <div className="mb-3" role="button" onClick={() => setTab(2)}>
-                        <i className='bx bxs-grid'></i>
+                    <div className="mb-4" role="button" onClick={() => setTab(2)}>
+                        <BiCategory size={25} className="me-2" />
                         <span>Categories</span>
                     </div>
-                    <div className="mb-3" role="button" onClick={() => setTab(3)}>
-                        <i className='bx bx-briefcase-alt'></i>
+                    <div className="mb-4" role="button" onClick={() => setTab(3)}>
+                        <GiClothes size={25} className="me-2" />
                         <span>Products</span>
                     </div>
-                    <div className="mb-3" role="button" onClick={() => setTab(4)}>
-                        <i className='bx bx-envelope'></i>
+                    <div className="mb-4" role="button" onClick={() => setTab(4)}>
+                        <HiOutlineShoppingCart size={25} className="me-2" />
                         <span>Orders</span>
                     </div>
                 </div>

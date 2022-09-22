@@ -13,15 +13,7 @@ a {
 nav .nav-links ul {
     list-style: none;
     margin: 0;
-}
-
-nav .nav-links ul li:not(:last-child) {
-    margin-right: 2rem;
-}
-
-nav .nav-links ul li a {
-    font-weight: 600;
-    color: var(--text-primary);
+    padding-left: 1rem;
 }
 
 section.dashboard {
