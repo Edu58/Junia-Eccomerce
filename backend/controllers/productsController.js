@@ -20,22 +20,23 @@ const getAllProducts = async (req, res) => {
 }
 
 const addProduct = async (req, res) => {
-    const { title, price, description, category, image, inStock } = req.body
+    
+    if (req.fileValidationError) return res.status(400).json({ error: req.fileValidationError })
+    // try {
+    //     const newProduct = await Product.create({
+    //         title,
+    //         price,
+    //         description,
+    //         category,
+    //         image,
+    //         inStock
+    //     })
 
-    try {
-        const newProduct = await Product.create({
-            title,
-            price,
-            description,
-            category,
-            image,
-            inStock
-        })
-
-        return res.status(201).json({ 'message': 'product added successfully' })
-    } catch (error) {
-        return res.status(400).json({ 'error': error.message })
-    }
+    //     return res.status(201).json({ 'message': 'product added successfully' })
+    // } catch (error) {
+    //     return res.status(400).json({ 'error': error.message })
+    // }
+    res.json({ files: req.file, body: req.body })
 }
 
 module.exports = { getAllProducts, getProductsCategories, addProduct }
